@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useState } from "react";
 import { ToastAlerta } from "../util/ToastAlerta";
 import { login } from "../service/Service";
+import UsuarioLogin from "../models/UsuarioLogin";
 
 
 
@@ -21,12 +22,18 @@ export function AuthProvider({children}: AuthProviderProps){
 
     const [usuario, setUsuario] = useState<UsuarioLogin>({
         id: 0,
+        cpf: '',
         nome: '',
+        data_nascimento: '',
+        tipo_usuario: '',
+        telefone: '',
         usuario: '',
         senha: '',
         foto: '',
-        token: '',
-    })
+        viagem: '',
+        criado_em: '',
+        atualizado_em: '',
+        })
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -49,11 +56,17 @@ export function AuthProvider({children}: AuthProviderProps){
     function handleLogout(){
         setUsuario({
             id: 0,
+            cpf: '',
             nome: '',
+            data_nascimento: '',
+            tipo_usuario: '',
+            telefone: '',
             usuario: '',
             senha: '',
             foto: '',
-            token: '',
+            viagem: '',
+            criado_em: '',
+            atualizado_em: '',
 
         })
     }
