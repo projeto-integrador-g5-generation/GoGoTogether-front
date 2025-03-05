@@ -33,6 +33,7 @@ export function AuthProvider({children}: AuthProviderProps){
         viagem: '',
         criado_em: '',
         atualizado_em: '',
+        token: ''
         })
 
     const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -67,6 +68,7 @@ export function AuthProvider({children}: AuthProviderProps){
             viagem: '',
             criado_em: '',
             atualizado_em: '',
+            token: '',
 
         })
     }

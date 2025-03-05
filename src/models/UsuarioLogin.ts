@@ -11,4 +11,5 @@ export default interface UsuarioLogin{
     viagem: string;
     criado_em: string;
     atualizado_em: string;
+    token: string; 
 }
