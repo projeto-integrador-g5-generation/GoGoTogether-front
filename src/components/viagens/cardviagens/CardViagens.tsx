@@ -27,14 +27,14 @@ function CardViagens({ viagem }: CardViagemProps) {
 				</div>
 
 				<div className="flex justify-center gap-2 items-center">
-				     <Link to={`/atualizarviagem/${viagem.id}`}>
+				     <Link to={`/viagens/editar/${viagem.id}`}>
 						 <Pencil
 							size={24}
 							className="mr-1 fill-white hover:fill-green-500"
 						/>
 					</Link>
 
-					<Link to={`/deletarviagem/${viagem.id}`}>
+					<Link to={`/viagens/deletar/${viagem.id}`}>
 						{viagem.id ? (
 							<Trash size={24} className="mr-1 fill-white hover:fill-red-300" />
 						) : (

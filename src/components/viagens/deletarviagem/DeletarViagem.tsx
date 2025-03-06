@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from 'react'
 import { RotatingLines } from 'react-loader-spinner'
 import { useNavigate, useParams } from 'react-router-dom'
@@ -38,7 +40,7 @@ function DeletarViagem() {
 	useEffect(() => {
 		if (token === '') {
 			ToastAlerta('Você precisa estar logado!', 'info')
-			navigate('/')
+			navigate('/login')
 		}
 	}, [token])
 

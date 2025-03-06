@@ -12,6 +12,8 @@ import { ClipLoader } from "react-spinners";
 function ListarVeiculos() {
   const navigate = useNavigate();
 
+  const [isLoading, setIsloading ] = useState(false)
+
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
   const [listaVeiculo, setListaVeiculo] = useState(veiculos);
   const [nomeVeiculo, setNomeVeiculo] = useState("");
@@ -20,6 +22,8 @@ function ListarVeiculos() {
   const token = usuario.token;
 
   async function buscarVeiculos() {
+    setIsloading(true)
+
     try {
       await buscar("/veiculos", setVeiculos, {
         headers: {
@@ -32,6 +36,8 @@ function ListarVeiculos() {
         handleLogout();
       }
     }
+
+    setIsloading(false)
   }
 
   useEffect(() => {
@@ -54,7 +60,7 @@ function ListarVeiculos() {
 
     return (
         <>
-            {veiculos.length === 0 && (
+            {isLoading && (
                 <ClipLoader
                     size={200}
                     color={"#123abc"}

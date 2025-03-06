@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -89,7 +91,7 @@ function FormViagem() {
 	useEffect(() => {
 		if (!token) {
 			ToastAlerta('Você precisa estar logado!', 'info');
-			navigate('/');
+			navigate('/login');
 		}
 	}, [token]);
 
