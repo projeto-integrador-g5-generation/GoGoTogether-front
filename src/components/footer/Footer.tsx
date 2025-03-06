@@ -1,7 +1,7 @@
 import { GithubLogo } from "@phosphor-icons/react";
 
 function Footer() {
-  let data = new Date().getFullYear();
+  const data = new Date().getFullYear();
 
   return (
     <div className="flex justify-center text-white bg-black text-center ">

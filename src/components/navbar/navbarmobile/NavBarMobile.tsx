@@ -49,7 +49,7 @@ function NavBarMobile() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 30 }}
           transition={{ duration: 0.5 }}
-          className=" text-white bg-emerald-700 py-4 rounded-lg  flex flex-col absolute right-0 w-1/2"
+          className="z-10 text-white bg-emerald-700 py-4 rounded-lg  flex flex-col absolute right-0 w-1/2"
         >
           <motion.ul
             className="flex flex-col gap-10 p-2 text-2xl "

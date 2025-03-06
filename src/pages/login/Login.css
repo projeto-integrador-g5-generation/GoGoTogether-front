@@ -1,0 +1,75 @@
+
+.background-container-login {
+  background-image: url('https://ik.imagekit.io/alanaoliv/imagens_api-20250117T123121Z-001/imagens_api/Rectangle%206.svg?updatedAt=1741186505054');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 32px;
+  max-width: 500px;
+  width: 90%;
+  margin: 20px;
+  transition: transform 0.3s;
+}
+
+.form-container h2 {
+  font-size: 32px;
+  color: #1e293b; 
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.form-input {
+  border: 2px solid #cbd5e1; 
+  padding: 8px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.form-input:focus {
+  border-color: #3b82f6; 
+  outline: none;
+}
+
+.form-button {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin-top: 16px;
+  transition: background-color 0.3s;
+}
+
+.form-button.submit {
+  background-color: #14b8a6; 
+}
+
+.form-button.submit:hover {
+  background-color: #0d9488; 
+}
+
+.form-button.cancel {
+  background-color: #ef4444; 
+  color: #fff;
+}
+
+.form-button.cancel:hover {
+  background-color: #dc2626;
+}
+
+.form-container:hover {
+  transform: scale(1.02);
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

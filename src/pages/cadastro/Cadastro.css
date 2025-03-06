@@ -1,0 +1,85 @@
+/* Estilo do container do formulário */
+.background-container {
+    background-image: url('https://ik.imagekit.io/alanaoliv/imagens_api-20250117T123121Z-001/imagens_api/austin-neill-2C80kNmfIzs-unsplash.jpg');
+    background-size: cover;         
+    background-position: center;    
+    background-repeat: no-repeat;   
+    min-height: 100vh;              
+    display: flex;                  
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+    padding: 32px; 
+    max-width: 500px;
+    width: 90%;
+    margin: 20px; 
+    transition: transform 0.3s; 
+}
+  
+.form-container:hover {
+    transform: scale(1.02); 
+}
+  
+.form-container h2 {
+    font-size: 28px; 
+    color: #1e293b; 
+    text-align: center;
+    margin-bottom: 24px; 
+}
+  
+.form-input {
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 5px; 
+    width: 100%;
+    margin-bottom: 16px; 
+    transition: border-color 0.3s, box-shadow 0.3s; 
+}
+  
+.form-input:focus {
+    border-color: #3b82f6; 
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3); 
+    outline: none;
+}
+  
+.form-button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px; 
+    cursor: pointer;
+    margin-top: 16px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+  
+ 
+.form-button.cancel {
+    background-color: #ef4444; 
+    color: #fff;
+}
+  
+.form-button.cancel:hover {
+    background-color: #dc2626; 
+    transform: scale(1.05); 
+}
+
+.form-button.submit {
+    background-color: #14b8a6; 
+    color: #fff;
+}
+  
+.form-button.submit:hover {
+    background-color: #0d9488; 
+}
+  
+ 
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 16px;
+}
+  
