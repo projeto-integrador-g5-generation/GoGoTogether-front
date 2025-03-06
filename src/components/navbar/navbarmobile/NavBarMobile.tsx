@@ -59,7 +59,7 @@ function NavBarMobile() {
             variants={listaAnimation}
           >
             <li className="cursor-pointer pl-4 font-bold">Viagens</li>
-            <li className="cursor-pointer pl-4 font-bold">Veiculos</li>
+            
             <li className="cursor-pointer pl-4 font-bold">Veiculos</li>
             <li className="cursor-pointer pl-4  font-bold ">Carrinho</li>
             <li className="cursor-pointer pl-4 font-bold">Usuario</li>
