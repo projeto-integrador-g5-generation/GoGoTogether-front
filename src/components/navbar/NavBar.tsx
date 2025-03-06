@@ -1,3 +1,5 @@
+import NavBarMobile from "./navbarmobile/NavBarMobile";
+
 function NavBar() {
   return (
     <div
@@ -19,7 +21,7 @@ function NavBar() {
         </div>
       </div>
 
-      <div id="lista" className="flex items-center p-2">
+      <div id="lista" className="items-center p-2 hidden md:flex">
         {/* falta colocar o Link=to"" tirar a ul e as li e trocar po Link=to"" e ajustar div lista*/}
         <ul id="" className="flex gap-3 text-white items-center">
           <li className="cursor-pointer">Viagens</li>
@@ -39,6 +41,12 @@ function NavBar() {
           </li>
         </ul>
       </div>
+
+        {/*Botão nav para mobile a partir de uma certa largura*/}
+            <div className="md:hidden ">
+                    <NavBarMobile/>
+            </div>
+
     </div>
   );
 }
