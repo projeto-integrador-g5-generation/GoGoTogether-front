@@ -1,10 +1,10 @@
-import Viagem from "./Viagem"
+import Viagem from "./Viagens"
 
 export default interface Veiculo{
     id: number
     modelo: string
     marca: string
-    ano: number
+    ano: string
     cor: string
     categoria: string
     foto: string    
