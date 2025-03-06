@@ -31,9 +31,10 @@ export const buscar = async (
 export const cadastrar = async (
   url: string,
   dados: object,
-  setDados: Function,
+  setDados: Function, 
+  header: object
 ) => {
-  const resposta = await api.post(url, dados);
+  const resposta = await api.post(url, dados, header);
   setDados(resposta.data);
 };
 
