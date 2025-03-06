@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom'
 import Viagem from '../../../models/Viagens'
 import { formatarData, formatarHora } from '../../../util/FormatarData'
 import { formatarMoeda } from '../../../util/FormatarMoeda'
+import { useContext } from 'react'
+import { CartContext } from '../../../context/CardContext'
+
 
 
 interface CardViagemProps {
@@ -12,8 +15,10 @@ interface CardViagemProps {
 
 function CardViagens({ viagem }: CardViagemProps) {
 
+	const { adicionarProduto } = useContext(CartContext)
+
 	return (
-		<div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white mx-4 my-10 hover:shadow-lg">
+		<div className="flex flex-col rounded-lg overflow-hidden justify-between bg-transparent mx-4 my-10 hover:shadow-lg">
 			<div className="flex justify-between items-center p-2 bg-emerald-700">
 				<div className="flex items-center">
 					<img
@@ -87,7 +92,7 @@ function CardViagens({ viagem }: CardViagemProps) {
 							Velocidade Média: {viagem.velocidade_media} Km²
 						</p>
 						<p className="text-sm text-left py-1">
-							Tempo Estimado: {viagem.duracao_estimada}
+							Tempo Estimado: {viagem.duracao_estimada} min
 						</p>
 					</div>
 
@@ -110,6 +115,7 @@ function CardViagens({ viagem }: CardViagemProps) {
 
 			<button
 				className="w-full text-white bg-blue-500 hover:bg-blue-600 flex items-center justify-center py-2"
+				onClick={() => adicionarProduto(viagem)}
 			>
 				Contratar
 			</button>

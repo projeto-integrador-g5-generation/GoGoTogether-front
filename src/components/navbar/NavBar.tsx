@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import NavBarMobile from "./navbarmobile/NavBarMobile";
+import { useContext } from "react";
+import { CartContext } from "../../context/CardContext";
 
 function NavBar() {
+  const { quantidadeItems } = useContext(CartContext);
+
   return (
     <div
       id="Pai"
@@ -24,7 +28,9 @@ function NavBar() {
       <div id="lista" className="items-center p-2 hidden md:flex">
         {/* falta colocar o Link=to"" tirar a ul e as li e trocar po Link=to"" e ajustar div lista*/}
         <ul id="" className="flex gap-3 text-white items-center">
-          <li className="cursor-pointer"><Link to={"/viagens"}>Viagens</Link></li>
+          <li className="cursor-pointer">
+            <Link to={"/viagens"}>Viagens</Link>
+          </li>
           <li className="cursor-pointer">
             <Link to={"/veiculos"}>Veículos</Link>
           </li>
@@ -44,16 +50,20 @@ function NavBar() {
                 alt="Carrinho de Compra"
                 className="cursor-pointer"
               />
+              {quantidadeItems > 0 && (
+                <span className="relative -top-9 -right-5 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {quantidadeItems}
+                </span>
+              )}
             </Link>
           </li>
         </ul>
       </div>
 
-        {/*Botão nav para mobile a partir de uma certa largura*/}
-            <div className="md:hidden ">
-                    <NavBarMobile/>
-            </div>
-
+      {/*Botão nav para mobile a partir de uma certa largura*/}
+      <div className="md:hidden ">
+        <NavBarMobile />
+      </div>
     </div>
   );
 }
