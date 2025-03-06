@@ -15,9 +15,7 @@ import Sobre from "./pages/sobre/Sobre";
 function App() {
   return (
     <>
-<<<<<<< HEAD
-      <h1>GoGoTogether</h1>
-=======
+      
       <AuthProvider>
         <ToastContainer />
         <BrowserRouter>
@@ -40,7 +38,6 @@ function App() {
           <Footer />
         </BrowserRouter>
       </AuthProvider>
->>>>>>> d75d22c5a79ac393ecb333d7eeabd6e365a3c84c
     </>
   );
 }
