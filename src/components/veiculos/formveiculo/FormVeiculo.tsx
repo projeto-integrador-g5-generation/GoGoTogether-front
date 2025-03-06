@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -36,7 +37,7 @@ function FormVeiculo() {
   useEffect(() => {
     if (token === "") {
       ToastAlerta("Você precisa estar logado", "info");
-      navigate("/");
+      navigate("/login");
     }
   }, [token]);
 

@@ -6,6 +6,7 @@ import { cadastrarUsuario } from "../../service/Service";
 import { Eye, EyeClosed } from "phosphor-react";
 import { RotatingLines } from "react-loader-spinner";
 import "./Cadastro.css";
+import { Link } from "react-router-dom";
 
 function Cadastro() {
   const [usuario, setUsuario] = useState<Usuario>({
@@ -183,7 +184,7 @@ function Cadastro() {
             style={{ display: "flex", gap: "10px", justifyContent: "center" }}
           >
             <button type="reset" className="form-button cancel">
-              Cancelar
+              <Link to={"/login"}>Cancelar</Link>
             </button>
             <button type="submit" className="form-button submit">
               {isLoading ? (

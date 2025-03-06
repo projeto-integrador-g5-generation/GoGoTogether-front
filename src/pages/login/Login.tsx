@@ -5,9 +5,11 @@ import UsuarioLogin from "../../models/UsuarioLogin";
 import { RotatingLines } from "react-loader-spinner";
 import "./login.css";
 import { AuthContext } from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const { handleLogin } = useContext(AuthContext);
+  const navigate = useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
   const [usuarioLogin, setUsuarioLogin] = useState<UsuarioLogin>(
@@ -31,6 +33,7 @@ function Login() {
 
     try {
       handleLogin(usuarioLogin);
+      navigate("/home");
     } catch (error: any) {
       console.log(error);
       setErro("Usuário ou senha incorretos!");
