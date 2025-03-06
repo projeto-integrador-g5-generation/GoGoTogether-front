@@ -45,7 +45,7 @@ function FormVeiculo() {
         }
     }, [id]);
 
-    function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
         setVeiculo({
             ...veiculo,
             [e.target.name]: e.target.value,
@@ -114,7 +114,7 @@ function FormVeiculo() {
                         name="modelo"
                         className="border-2 border-slate-700 rounded p-2 utral-800"
                         required
-                        value={veiculo.modelo || ""}
+                        value={veiculo.modelo}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
@@ -127,50 +127,57 @@ function FormVeiculo() {
                         name="marca"
                         className="border-2 border-slate-700 rounded p-2 utral-800"
                         required
-                        value={veiculo.marca || ""}
+                        value={veiculo.marca}
                         onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                     />
                 </div>
+
                 
-                    <div className="flex flex-col gap-1 ">
-                        <label htmlFor="ano">Ano</label>
-                        <input
-                            type="text"
-                            placeholder="Adicione o ano do veiculo"
-                            name="ano"
-                            className="border-2 border-slate-700 rounded p-2 utral-800"
-                            required
-                            value={veiculo.ano || ""}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                        />
-                    </div>
-                    <div className="flex flex-col gap-1 ">
-                        <label htmlFor="cor">Cor</label>
-                        <input
-                            type="text"
-                            placeholder="Adicione a cor do veiculo"
-                            name="cor"
-                            className="border-2 border-slate-700 rounded p-2 utral-800"
-                            required
-                            value={veiculo.cor || ""}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                        />
-                    </div>
-                    <div className="flex justify-between w-full flex-wrap">
-                    <div className="flex flex-col gap-1 w-1/2 pr-1">
+                <div className="flex justify-between w-full flex-wrap">
+                <div className="flex flex-col gap-1 w-1/2 pr-1 ">
+                    <label htmlFor="ano">Ano</label>
+                    <input
+                        type="text"
+                        placeholder="Adicione o ano do veiculo"
+                        name="ano"
+                        className="border-2 border-slate-700 rounded p-2 utral-800"
+                        required
+                        value={veiculo.ano}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+                <div className="flex flex-col gap-1 w-1/2 pl-1 ">
+                    <label htmlFor="cor">Cor</label>
+                    <input
+                        type="text"
+                        placeholder="Adicione a cor do veiculo"
+                        name="cor"
+                        className="border-2 border-slate-700 rounded p-2 utral-800"
+                        required
+                        value={veiculo.cor}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+
+
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pr-1">
                         <label htmlFor="categoria">Categoria</label>
-                        <input
-                            type="text"
-                            placeholder="Adicione a categoria do veiculo"
+                        <select
                             name="categoria"
-                            className="border-2 border-slate-700 rounded p-2 utral-800"
+                            className="border-2 border-slate-700 rounded p-2 bg-white"
                             required
-                            value={veiculo.categoria || ""}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                        />
+                            value={veiculo.categoria}
+                            onChange={(e: ChangeEvent<HTMLSelectElement>) => atualizarEstado(e)}
+                        >
+                            <option value="" disabled>Selecione uma categoria</option>
+                            <option value="hatch">Hatch</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="outro">Outro</option>
+                        </select>
                     </div>
 
-                    <div className="flex flex-col gap-1 w-1/2 pl-1 ">
+                    <div className="flex flex-col gap-1 py-2 w-1/2 pl-1 ">
                         <label htmlFor="placa">Placa </label>
                         <input
                             type="text"
@@ -178,12 +185,12 @@ function FormVeiculo() {
                             name="placa"
                             className="border-2 border-slate-700 rounded p-2 utral-800"
                             required
-                            value={veiculo.placa || ""}
+                            value={veiculo.placa}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1 w-1/2 pr-1">
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pr-1">
                         <label htmlFor="foto">Foto </label>
                         <input
                             type="text"
@@ -191,25 +198,32 @@ function FormVeiculo() {
                             name="foto"
                             className="border-2 border-slate-700 rounded p-2 utral-800"
                             required
-                            value={veiculo.foto || ""}
+                            value={veiculo.foto}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1 w-1/2 pl-1">
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pl-1">
                         <label htmlFor="combustivel">Combustível </label>
-                        <input
-                            type="text"
-                            placeholder="Adicione o combustível do Veículo"
+                        <select                            
                             name="combustivel"
                             className="border-2 border-slate-700 rounded p-2 utral-800"
                             required
-                            value={veiculo.combustivel || ""}
-                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-                        />
+                            value={veiculo.combustivel}
+                            onChange={(e: ChangeEvent<HTMLSelectElement>) => atualizarEstado(e)}
+                        >
+                            <option value="" disabled>Selecione um tipo de combustível</option>
+                            <option value="gasolina">Gasolina</option>
+                            <option value="etanol">Etanol</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="flex">Flex</option>
+                            <option value="hibrido">Hibrido</option>
+                            <option value="eletrico">Eletrico</option>
+                        </select>
                     </div>
+                    
 
-                    <div className="flex flex-col gap-1 w-1/2 pr-1 ">
+                    <div className="flex flex-col gap-1 py-2 w-1/2 pr-1 ">
                         <label htmlFor="capacidade">Capacidade </label>
                         <input
                             type="number"
@@ -217,12 +231,12 @@ function FormVeiculo() {
                             name="capacidade"
                             className="border-2 border-slate-700 rounded p-2 utral-800"
                             required
-                            value={veiculo.capacidade || ""}
+                            value={veiculo.capacidade}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
 
-                    <div className="flex flex-col gap-1 w-1/2 pl-1">
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pl-1">
                         <label htmlFor="asseentos_disponiveis">Assentos Disponíveis </label>
                         <input
                             type="number"
@@ -230,15 +244,15 @@ function FormVeiculo() {
                             name="assentos_disponiveis"
                             className="border-2 border-slate-700 rounded p-2 utral-800"
                             required
-                            value={veiculo.assentos_disponiveis || ""}
+                            value={veiculo.assentos_disponiveis}
                             onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
                         />
                     </div>
                 </div>
 
                 <button
-                    className="rounded text-slate-100 bg-cyan-600 
-          hover:bg-cyan-900 w-1/2 py-2 mx-auto flex justify-center"
+                    className="rounded text-slate-100 bg-emerald-600 
+          hover:bg-emerald-900 w-1/2 py-2 mx-auto flex justify-center"
                     type="submit"
                 >
                     {isLoading ? (

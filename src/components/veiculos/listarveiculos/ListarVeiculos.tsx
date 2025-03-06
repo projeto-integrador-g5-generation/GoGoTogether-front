@@ -62,9 +62,9 @@ function ListarVeiculos() {
     
             {/* Container principal para a barra de pesquisa e botão de cadastro */}
             <div className="bg-gray-200 flex justify-center p-4">
-                <div className="w-full max-w-6xl flex items-center gap-4">
+                <div className="w-full max-w-6xl flex flex-col sm:flex-row items-center gap-4">
                     {/* Barra de pesquisa com botão de lupa */}
-                    <div className="flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400">
+                    <div className="flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400 w-full sm:w-auto">
                         <input
                             className="w-full px-4 py-2 h-9 focus:outline-none"
                             type="search"
@@ -86,8 +86,8 @@ function ListarVeiculos() {
     
                     {/* Botão de cadastrar veículo */}
                     <button
-                        className="cursor-pointer px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-800 focus:outline-none font-bold"
-                        onClick={() => navigate("/cadastrarveiculo")} // Ajuste a rota conforme necessário
+                        className="cursor-pointer px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-800 focus:outline-none font-bold w-full sm:w-auto"
+                        onClick={() => navigate("/cadastrarveiculo")}
                     >
                         Cadastrar Veículo
                     </button>
@@ -102,7 +102,7 @@ function ListarVeiculos() {
                     </p>
                 </div>
             ) : (
-                <div className="container mx-auto my-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className="container mx-auto my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {listaVeiculo.map((veiculo) => (
                         <CardVeiculos key={veiculo.id} veiculo={veiculo} />
                     ))}
@@ -110,6 +110,7 @@ function ListarVeiculos() {
             )}
         </>
     );
+    
 }
 
 export default ListarVeiculos
