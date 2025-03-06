@@ -47,12 +47,12 @@ function FormVeiculo() {
     }
   }, [id]);
 
-  function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
-    setVeiculo({
-      ...veiculo,
-      [e.target.name]: e.target.value,
-    });
-  }
+    function atualizarEstado(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+        setVeiculo({
+            ...veiculo,
+            [e.target.name]: e.target.value,
+        });
+    }
 
   async function gerarNovoVeiculo(e: ChangeEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -106,169 +106,172 @@ function FormVeiculo() {
         {id === undefined ? "Cadastrar Veículo" : "Editar Veículo"}
       </h1>
 
-      <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoVeiculo}>
-        <div className="flex flex-col gap-1 ">
-          <label htmlFor="modelo">Modelo </label>
-          <input
-            type="text"
-            placeholder="Adicione o modelo do veiculo"
-            name="modelo"
-            className="border-2 border-slate-700 rounded p-2 utral-800"
-            required
-            value={veiculo.modelo || ""}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-          />
+            <form className="w-1/2 flex flex-col gap-4" onSubmit={gerarNovoVeiculo}>
+
+                <div className="flex flex-col gap-1 ">
+                    <label htmlFor="modelo">Modelo </label>
+                    <input
+                        type="text"
+                        placeholder="Adicione o modelo do veiculo"
+                        name="modelo"
+                        className="border-2 border-slate-700 rounded p-2 utral-800"
+                        required
+                        value={veiculo.modelo}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+
+                <div className="flex flex-col gap-1 ">
+                    <label htmlFor="marca">Marca</label>
+                    <input
+                        type="text"
+                        placeholder="Adicione a marca do veiculo"
+                        name="marca"
+                        className="border-2 border-slate-700 rounded p-2 utral-800"
+                        required
+                        value={veiculo.marca}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+
+                
+                <div className="flex justify-between w-full flex-wrap">
+                <div className="flex flex-col gap-1 w-1/2 pr-1 ">
+                    <label htmlFor="ano">Ano</label>
+                    <input
+                        type="text"
+                        placeholder="Adicione o ano do veiculo"
+                        name="ano"
+                        className="border-2 border-slate-700 rounded p-2 utral-800"
+                        required
+                        value={veiculo.ano}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+                <div className="flex flex-col gap-1 w-1/2 pl-1 ">
+                    <label htmlFor="cor">Cor</label>
+                    <input
+                        type="text"
+                        placeholder="Adicione a cor do veiculo"
+                        name="cor"
+                        className="border-2 border-slate-700 rounded p-2 utral-800"
+                        required
+                        value={veiculo.cor}
+                        onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                    />
+                </div>
+
+
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pr-1">
+                        <label htmlFor="categoria">Categoria</label>
+                        <select
+                            name="categoria"
+                            className="border-2 border-slate-700 rounded p-2 bg-white"
+                            required
+                            value={veiculo.categoria}
+                            onChange={(e: ChangeEvent<HTMLSelectElement>) => atualizarEstado(e)}
+                        >
+                            <option value="" disabled>Selecione uma categoria</option>
+                            <option value="hatch">Hatch</option>
+                            <option value="sedan">Sedan</option>
+                            <option value="suv">SUV</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div className="flex flex-col gap-1 py-2 w-1/2 pl-1 ">
+                        <label htmlFor="placa">Placa </label>
+                        <input
+                            type="text"
+                            placeholder="Adicione a placa do Veículo"
+                            name="placa"
+                            className="border-2 border-slate-700 rounded p-2 utral-800"
+                            required
+                            value={veiculo.placa}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        />
+                    </div>
+
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pr-1">
+                        <label htmlFor="foto">Foto </label>
+                        <input
+                            type="text"
+                            placeholder="Adicione a foto do Veiculo"
+                            name="foto"
+                            className="border-2 border-slate-700 rounded p-2 utral-800"
+                            required
+                            value={veiculo.foto}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        />
+                    </div>
+
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pl-1">
+                        <label htmlFor="combustivel">Combustível </label>
+                        <select                            
+                            name="combustivel"
+                            className="border-2 border-slate-700 rounded p-2 utral-800"
+                            required
+                            value={veiculo.combustivel}
+                            onChange={(e: ChangeEvent<HTMLSelectElement>) => atualizarEstado(e)}
+                        >
+                            <option value="" disabled>Selecione um tipo de combustível</option>
+                            <option value="gasolina">Gasolina</option>
+                            <option value="etanol">Etanol</option>
+                            <option value="diesel">Diesel</option>
+                            <option value="flex">Flex</option>
+                            <option value="hibrido">Hibrido</option>
+                            <option value="eletrico">Eletrico</option>
+                        </select>
+                    </div>
+                    
+
+                    <div className="flex flex-col gap-1 py-2 w-1/2 pr-1 ">
+                        <label htmlFor="capacidade">Capacidade </label>
+                        <input
+                            type="number"
+                            placeholder="Adicione a capacidade do Veículo"
+                            name="capacidade"
+                            className="border-2 border-slate-700 rounded p-2 utral-800"
+                            required
+                            value={veiculo.capacidade}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        />
+                    </div>
+
+                    <div className="flex flex-col py-2 gap-1 w-1/2 pl-1">
+                        <label htmlFor="asseentos_disponiveis">Assentos Disponíveis </label>
+                        <input
+                            type="number"
+                            placeholder="Adicione a quantidade de assentos disponíveis"
+                            name="assentos_disponiveis"
+                            className="border-2 border-slate-700 rounded p-2 utral-800"
+                            required
+                            value={veiculo.assentos_disponiveis}
+                            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
+                        />
+                    </div>
+                </div>
+
+                <button
+                    className="rounded text-slate-100 bg-emerald-600 
+          hover:bg-emerald-900 w-1/2 py-2 mx-auto flex justify-center"
+                    type="submit"
+                >
+                    {isLoading ? (
+                        <RotatingLines
+                            strokeColor="white"
+                            strokeWidth="5"
+                            animationDuration="0.75"
+                            width="24"
+                            visible={true}
+                        />
+                    ) : (
+                        <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
+                    )}
+                </button>
+            </form>
         </div>
-
-        <div className="flex flex-col gap-1 ">
-          <label htmlFor="marca">Marca</label>
-          <input
-            type="text"
-            placeholder="Adicione a marca do veiculo"
-            name="marca"
-            className="border-2 border-slate-700 rounded p-2 utral-800"
-            required
-            value={veiculo.marca || ""}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-          />
-        </div>
-
-        <div className="flex flex-col gap-1 ">
-          <label htmlFor="ano">Ano</label>
-          <input
-            type="text"
-            placeholder="Adicione o ano do veiculo"
-            name="ano"
-            className="border-2 border-slate-700 rounded p-2 utral-800"
-            required
-            value={veiculo.ano || ""}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-          />
-        </div>
-        <div className="flex flex-col gap-1 ">
-          <label htmlFor="cor">Cor</label>
-          <input
-            type="text"
-            placeholder="Adicione a cor do veiculo"
-            name="cor"
-            className="border-2 border-slate-700 rounded p-2 utral-800"
-            required
-            value={veiculo.cor || ""}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
-          />
-        </div>
-        <div className="flex justify-between w-full flex-wrap">
-          <div className="flex flex-col gap-1 w-1/2 pr-1">
-            <label htmlFor="categoria">Categoria</label>
-            <input
-              type="text"
-              placeholder="Adicione a categoria do veiculo"
-              name="categoria"
-              className="border-2 border-slate-700 rounded p-2 utral-800"
-              required
-              value={veiculo.categoria || ""}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-
-          <div className="flex flex-col gap-1 w-1/2 pl-1 ">
-            <label htmlFor="placa">Placa </label>
-            <input
-              type="text"
-              placeholder="Adicione a placa do Veículo"
-              name="placa"
-              className="border-2 border-slate-700 rounded p-2 utral-800"
-              required
-              value={veiculo.placa || ""}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-
-          <div className="flex flex-col gap-1 w-1/2 pr-1">
-            <label htmlFor="foto">Foto </label>
-            <input
-              type="text"
-              placeholder="Adicione a foto do Veiculo"
-              name="foto"
-              className="border-2 border-slate-700 rounded p-2 utral-800"
-              required
-              value={veiculo.foto || ""}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-
-          <div className="flex flex-col gap-1 w-1/2 pl-1">
-            <label htmlFor="combustivel">Combustível </label>
-            <input
-              type="text"
-              placeholder="Adicione o combustível do Veículo"
-              name="combustivel"
-              className="border-2 border-slate-700 rounded p-2 utral-800"
-              required
-              value={veiculo.combustivel || ""}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-
-          <div className="flex flex-col gap-1 w-1/2 pr-1 ">
-            <label htmlFor="capacidade">Capacidade </label>
-            <input
-              type="number"
-              placeholder="Adicione a capacidade do Veículo"
-              name="capacidade"
-              className="border-2 border-slate-700 rounded p-2 utral-800"
-              required
-              value={veiculo.capacidade || ""}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-
-          <div className="flex flex-col gap-1 w-1/2 pl-1">
-            <label htmlFor="asseentos_disponiveis">Assentos Disponíveis </label>
-            <input
-              type="number"
-              placeholder="Adicione a quantidade de assentos disponíveis"
-              name="assentos_disponiveis"
-              className="border-2 border-slate-700 rounded p-2 utral-800"
-              required
-              value={veiculo.assentos_disponiveis || ""}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                atualizarEstado(e)
-              }
-            />
-          </div>
-        </div>
-
-        <button
-          className="rounded text-slate-100 bg-cyan-600 
-          hover:bg-cyan-900 w-1/2 py-2 mx-auto flex justify-center"
-          type="submit"
-        >
-          {isLoading ? (
-            <RotatingLines
-              strokeColor="white"
-              strokeWidth="5"
-              animationDuration="0.75"
-              width="24"
-              visible={true}
-            />
-          ) : (
-            <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
-          )}
-        </button>
-      </form>
-    </div>
-  );
+    );
 }
 
 export default FormVeiculo;
