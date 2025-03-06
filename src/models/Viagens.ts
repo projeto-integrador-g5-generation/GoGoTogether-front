@@ -10,7 +10,7 @@ export default interface Viagem{
     destino: string
     data_hora_partida: string
     preco: number
-    status_viagem: string
+    status_viagem: number
     distancia: number
     velocidade_media: number
     duracao_estimada?: number

@@ -1,18 +1,19 @@
 import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { RotatingLines } from 'react-loader-spinner';
 import { useNavigate, useParams } from 'react-router-dom';
+import { AuthContext } from '../../../context/AuthContext';
 import Veiculo from '../../../models/Veiculo';
 import Viagem from '../../../models/Viagens';
-import { AuthContext } from '../../../context/AuthContext';
 import { atualizar, buscar, cadastrar } from '../../../service/Service';
-import { ToastAlerta } from '../../../util/ToastAlerta';
 import { formatarDataSubmit } from '../../../util/FormatarData';
+import { ToastAlerta } from '../../../util/ToastAlerta';
 
 
 function FormViagem() {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
+
 
 	const [veiculo, setVeiculo] = useState<Veiculo>({
 		id: 0,
@@ -35,7 +36,7 @@ function FormViagem() {
 
 	const { id } = useParams<{ id: string }>();
 	const { usuario, handleLogout } = useContext(AuthContext);
-	const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYXJjb3Muc2lsdmFAZW1haWwuY29tIiwiaWF0IjoxNzQxMjc2NTgwLCJleHAiOjE3NDEyODAxODB9.NeyMr9zOXW1RXofPlG54dD_axU2uHOHywAa5RyvrgYU"
+	const token = usuario.token
 
 	async function buscarViagemPorId(id: string) {
 		try {
@@ -99,15 +100,12 @@ function FormViagem() {
 		}
 	}, [id]);
 
+	
 	useEffect(() => {
-		if (veiculo.id > 0) {
-			setViagem((prevState) => ({ ...prevState, veiculo }));
+		if (veiculo.id !== 0) {
+			setViagem((prevState) => ({ ...prevState, veiculo: veiculo, usuario: usuario}));
 		}
 	}, [veiculo]);
-
-	useEffect(() => {
-		console.log('Veículos carregados: ', veiculos);
-	}, [veiculos]);
 
 
 	const handleDataChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -119,6 +117,15 @@ function FormViagem() {
 		setDataAlterada(true);
 	};
 
+
+	function handleStatusChange(e: ChangeEvent<HTMLSelectElement>) {
+		setViagem((prevState) => ({
+			...prevState,
+			status_viagem: parseInt(e.target.value),
+		}));
+	}
+
+
 	function handleVeiculoChange(e: ChangeEvent<HTMLSelectElement>) {
 		const selectedId = e.target.value;
 		if (selectedId) {
@@ -126,8 +133,31 @@ function FormViagem() {
 		}
 	}
 
-	function atualizarEstado(e: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>) {
-		setViagem({ ...viagem, [e.target.name]: e.target.value });
+	function atualizarEstado(e: ChangeEvent<HTMLInputElement>) {
+		const { type, name, value } = e.target
+
+		let valor: string | number = value
+
+		switch (type) {
+			case 'number':
+			case 'range':
+				valor = value === '' ? '' : parseFloat(Number(value).toFixed(2))
+				break
+			case 'date':
+				valor = value 
+				break
+			default:
+				
+				if (!isNaN(Number(value)) && value !== '') {
+					valor = parseFloat(Number(value).toFixed(2))
+				}
+		}
+
+		setViagem({
+			...viagem,
+			[name]: valor, 
+	
+		})
 	}
 
 	function retornar() {
@@ -184,6 +214,8 @@ function FormViagem() {
 
 	const veiculoSelecionado = viagem.veiculo?.id > 0;
 
+	console.log(JSON.stringify(viagem))
+
 
 	return (
 		<div className="container flex flex-col mx-auto items-center bg-gray-200">
@@ -199,7 +231,7 @@ function FormViagem() {
 					<label htmlFor="Origem">Origem</label>
 					<input
 						value={viagem.origem}
-						onChange={atualizarEstado}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						type="text"
 						placeholder="Insira o local da partida"
 						name="origem"
@@ -212,7 +244,7 @@ function FormViagem() {
 					<label htmlFor="destino">Destino</label>
 					<input
 						value={viagem.destino}
-						onChange={atualizarEstado}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						type="text"
 						placeholder="Insira o Destino"
 						name="destino"
@@ -233,14 +265,14 @@ function FormViagem() {
 						onChange={handleDataChange}
 						value={viagem.data_hora_partida}
 						required
-					/>
+					/> 
 				</div>
 
 				<div className="flex flex-col gap-1">
 					<label htmlFor="preco">Valor do trajeto (R$)</label>
 					<input
 						value={viagem.preco}
-						onChange={atualizarEstado}
+						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						type="number"
 						step=".01"
 						placeholder="Adicione o valor do serviço"
@@ -254,16 +286,15 @@ function FormViagem() {
 					<p>Status</p>
 					<select
 						name="status_viagem"
-						id="viagem"
+						id="status_viagem"
 						className="border p-2 border-slate-800 rounded focus:outline-none focus:ring-2 focus:ring-zinc-400"
-						onChange={atualizarEstado}
-						value={viagem.status_viagem}
+						onChange={handleStatusChange}
+						value={viagem.status_viagem || '1'}
 					>
-						<option value=" " selected disabled>Selecione o Status</option>
-						<option value="agendada">Agendada</option>
-						<option value="em_andamento">Em Andamento</option>
-						<option value="concluida">Concluída</option>
-						<option value="cancelada">Cancelada</option>
+						<option value="1">Agendada</option>
+						<option value="2">Em Andamento</option>
+						<option value="3">Concluída</option>
+						<option value="4">Cancelada</option>
 					</select>
 				</div>
 
@@ -272,7 +303,7 @@ function FormViagem() {
 						<label htmlFor="distancia">Distância (Km)</label>
 						<input
 							value={viagem.distancia}
-							onChange={atualizarEstado}
+							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							type="number"
 							step=".01"
 							placeholder="Distância"
@@ -288,7 +319,7 @@ function FormViagem() {
 						</label>
 						<input
 							value={viagem.velocidade_media}
-							onChange={atualizarEstado}
+							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							type="number"
 							step=".01"
 							placeholder="Velocidade Média"

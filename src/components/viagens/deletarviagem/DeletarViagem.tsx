@@ -16,7 +16,7 @@ function DeletarViagem() {
 	const { id } = useParams<{ id: string }>()
 
 	const { usuario, handleLogout } = useContext(AuthContext)
-	const token ="Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYXJjb3Muc2lsdmFAZW1haWwuY29tIiwiaWF0IjoxNzQxMjc2NTgwLCJleHAiOjE3NDEyODAxODB9.NeyMr9zOXW1RXofPlG54dD_axU2uHOHywAa5RyvrgYU"
+	const token = usuario.token
 
 	async function buscarPorId(id: string) {
 		try {
@@ -36,7 +36,7 @@ function DeletarViagem() {
 	}
 
 	useEffect(() => {
-		if (token === null) {
+		if (token === '') {
 			ToastAlerta('Você precisa estar logado!', 'info')
 			navigate('/')
 		}

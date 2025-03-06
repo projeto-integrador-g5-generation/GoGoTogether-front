@@ -14,7 +14,7 @@ function CardViagens({ viagem }: CardViagemProps) {
 
 	return (
 		<div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white mx-4 my-10 hover:shadow-lg">
-			<div className="flex justify-between items-center p-2 bg-cyan-700">
+			<div className="flex justify-between items-center p-2 bg-emerald-700">
 				<div className="flex items-center">
 					<img
 						src={viagem.usuario?.foto}

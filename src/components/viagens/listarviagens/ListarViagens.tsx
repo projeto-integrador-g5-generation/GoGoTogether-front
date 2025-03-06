@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { DNA } from 'react-loader-spinner'
+import {  Grid } from 'react-loader-spinner'
 import Viagem from '../../../models/Viagens'
 import { AuthContext } from '../../../context/AuthContext'
 import { buscar } from '../../../service/Service'
@@ -13,7 +13,7 @@ function ListarViagens() {
 	const [viagens, setViagens] = useState<Viagem[]>([])
 
 	const { usuario, handleLogout } = useContext(AuthContext)
-	const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYXJjb3Muc2lsdmFAZW1haWwuY29tIiwiaWF0IjoxNzQxMjc2NTgwLCJleHAiOjE3NDEyODAxODB9.NeyMr9zOXW1RXofPlG54dD_axU2uHOHywAa5RyvrgYU"
+	const token = usuario.token
 	
 	async function buscarViagems() {
 		try {
@@ -30,7 +30,7 @@ function ListarViagens() {
 	}
 
 	useEffect(() => {
-		if (token === null) {
+		if (token === '') {
 			ToastAlerta('Você precisa estar logado!', 'info')
 			navigate('/')
 		}
@@ -50,13 +50,15 @@ function ListarViagens() {
 	return (
 		<>
 			{viagens.length === 0 && (
-				<DNA
-					visible={true}
-					height="200"
-					width="200"
-					ariaLabel="dna-loading"
-					wrapperStyle={{}}
-					wrapperClass="dna-wrapper mx-auto"
+				<Grid
+				visible={true}
+				height="80"
+				width="80"
+				color="#4fa94d"
+				ariaLabel="grid-loading"
+				radius="12.5"
+				wrapperStyle={{}}
+				wrapperClass="grid-wrapper"
 				/>
 			)}
 
