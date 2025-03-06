@@ -14,7 +14,7 @@ function FormVeiculo() {
     const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo);
 
     const { usuario, handleLogout } = useContext(AuthContext);
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5pY2l1c0BlbWFpbC5jb20iLCJpYXQiOjE3NDEyMTE3MzksImV4cCI6MTc0MTIxNTMzOX0.SAzxeNSeiDRUFk98JYPAjliDzuJDvglT6d59nim9HQE";
+    const token = usuario.token;
 
     const { id } = useParams<{ id: string }>();
 
@@ -33,7 +33,7 @@ function FormVeiculo() {
     }
 
     useEffect(() => {
-        if (token === null) {
+        if (token === "") {
             ToastAlerta("Você precisa estar logado", "info");
             navigate("/");
         }

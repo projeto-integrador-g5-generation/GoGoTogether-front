@@ -15,7 +15,7 @@ function ListarVeiculos() {
     const [nomeVeiculo, setNomeVeiculo] = useState("");
 
     const { usuario, handleLogout } = useContext(AuthContext)
-    const token = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ2aW5pY2l1c0BlbWFpbC5jb20iLCJpYXQiOjE3NDEyMTE3MzksImV4cCI6MTc0MTIxNTMzOX0.SAzxeNSeiDRUFk98JYPAjliDzuJDvglT6d59nim9HQE"
+    const token = usuario.token
 
     async function buscarVeiculos() {
         try {
@@ -32,7 +32,7 @@ function ListarVeiculos() {
     }
 
     useEffect(() => {
-        if (token === null) {
+        if (token === "") {
             ToastAlerta('Você precisa estar logado!', 'info')
             navigate('/')
         }
