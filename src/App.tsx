@@ -15,7 +15,7 @@ import ListarViagens from "./components/viagens/listarviagens/ListarViagens";
 import DeletarViagem from "./components/viagens/deletarviagem/DeletarViagem";
 import FormViagem from "./components/viagens/formviagem/FormViagem";
 import { CartProvider } from "./context/CardContext";
-import Cart from "./components/carrinho/cart";
+import Cart from "./components/carrinho/Cart";
 
 function App() {
   return (

@@ -44,6 +44,11 @@ function NavBar() {
             </Link>
           </li>
           <li>
+            <Link to={"/sobre"}>
+              Sobre
+            </Link>
+          </li>
+          <li>
             <Link to={"/carrinho"}>
               <img
                 src="https://ik.imagekit.io/50n5k5wmb/shopping-cart.svg?updatedAt=1739986833310"

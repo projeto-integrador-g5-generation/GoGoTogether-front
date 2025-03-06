@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, ReactNode, useState } from "react";
 import Viagem from "../models/Viagens";
 import { ToastAlerta } from "../util/ToastAlerta";
