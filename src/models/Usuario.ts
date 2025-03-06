@@ -1,5 +1,5 @@
 export default interface Usuario{
-    id: number;
+    id?: number;
     cpf: string;
     nome: string;
     data_nascimento: string;
@@ -8,6 +8,7 @@ export default interface Usuario{
     usuario: string;
     senha: string;
     foto: string;
-    viagem: string;
-    criado_em: string;
-    atualizado_em: string;}
+    viagem?: string;
+    criado_em?: string;
+    atualizado_em?: string;
+}

@@ -32,9 +32,8 @@ export const cadastrar = async (
   url: string,
   dados: object,
   setDados: Function,
-  header: object
 ) => {
-  const resposta = await api.post(url, dados, header);
+  const resposta = await api.post(url, dados);
   setDados(resposta.data);
 };
 

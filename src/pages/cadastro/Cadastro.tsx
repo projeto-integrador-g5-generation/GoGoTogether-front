@@ -6,11 +6,11 @@ import { cadastrarUsuario } from "../../service/Service";
 import { Eye, EyeClosed } from "phosphor-react";
 import { RotatingLines } from "react-loader-spinner";
 import "./Cadastro.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ToastAlerta } from "../../util/ToastAlerta";
 
 function Cadastro() {
   const [usuario, setUsuario] = useState<Usuario>({
-    id: 0,
     cpf: "",
     nome: "",
     data_nascimento: "",
@@ -19,40 +19,29 @@ function Cadastro() {
     usuario: "",
     senha: "",
     foto: "",
-    viagem: "",
-    criado_em: "",
-    atualizado_em: "",
   });
+  const navigate = useNavigate()
 
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [erro, setErro] = useState<string | null>(null);
-  const [sucesso, setSucesso] = useState<string | null>(null);
 
   const atualizarEstado = (
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
-    const { name, value } = e.target;
-    setUsuario((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
+    setUsuario({
+      ...usuario,
+      [e.target.name]: e.target.value
+    })
   };
 
   const cadastrar = async (e: FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    setErro(null);
-    setSucesso(null);
-
-    const formData = new FormData();
-    Object.entries(usuario).forEach(([key, value]) => {
-      formData.append(key, value);
-    });
 
     try {
-      await cadastrarUsuario("/usuarios/cadastrar", formData, () => {});
-      setSucesso("Usuário cadastrado com sucesso!");
+      await cadastrarUsuario("/usuarios/cadastrar", usuario, setUsuario);
+      ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
+      navigate('/login')
       setUsuario({
         id: 0,
         cpf: "",
@@ -69,10 +58,11 @@ function Cadastro() {
       });
     } catch (error: any) {
       console.log(error);
-      setErro("Erro ao cadastrar. Tente novamente!");
-    } finally {
-      setIsLoading(false);
+      ToastAlerta("Erro ao cadastrar. Tente novamente! " + error.response.data.message, "erro");
     }
+    
+    setIsLoading(false);
+    
   };
 
   return (
@@ -164,21 +154,11 @@ function Cadastro() {
             Foto
           </label>
           <input
-            type="file"
+            type="string"
             name="foto"
-            className="border-2 rounded p-2"
-            onChange={(e) => {
-              if (e.target.files) {
-                const file = e.target.files[0];
-                setUsuario({ ...usuario, foto: URL.createObjectURL(file) });
-              }
-            }}
+            className="form-input"
+            onChange={atualizarEstado}
           />
-
-          {erro && <p className="text-red-500 text-center mb-4">{erro}</p>}
-          {sucesso && (
-            <p className="text-green-500 text-center mb-4">{sucesso}</p>
-          )}
 
           <div
             style={{ display: "flex", gap: "10px", justifyContent: "center" }}
