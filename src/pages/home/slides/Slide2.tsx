@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Slide2() {
   return (
     <div
@@ -14,7 +16,7 @@ function Slide2() {
         </h1>
 
         <button className="border  p-2 bg-white cursor-pointer rounded drop-shadow-lg text-md md:text-2xl">
-          Adicionar nova carona
+          <Link to={"/viagens"}>Adicionar nova carona</Link>
         </button>
       </div>
     </div>

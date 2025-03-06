@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Slide1() {
   return (
     <div
@@ -15,7 +17,7 @@ function Slide1() {
         </h1>
 
         <button className="border p-2 cursor-pointer bg-white rounded  drop-shadow-lg ">
-          Viaje conosco
+          <Link to={"/viagens"}>Viaje conosco</Link>
         </button>
       </div>
     </div>

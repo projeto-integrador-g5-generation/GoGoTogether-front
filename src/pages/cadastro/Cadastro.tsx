@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Cadastro.tsx
 import { useState, ChangeEvent, FormEvent } from "react";
 import Usuario from "../../models/Usuario";
@@ -43,7 +44,6 @@ function Cadastro() {
     setErro(null);
     setSucesso(null);
 
-
     const formData = new FormData();
     Object.entries(usuario).forEach(([key, value]) => {
       formData.append(key, value);
@@ -66,7 +66,8 @@ function Cadastro() {
         criado_em: "",
         atualizado_em: "",
       });
-    } catch (error) {
+    } catch (error: any) {
+      console.log(error);
       setErro("Erro ao cadastrar. Tente novamente!");
     } finally {
       setIsLoading(false);
@@ -158,7 +159,9 @@ function Cadastro() {
             </span>
           </div>
 
-          <label htmlFor="foto" className="block text-gray-700 mb-2 mr-2">Foto</label>
+          <label htmlFor="foto" className="block text-gray-700 mb-2 mr-2">
+            Foto
+          </label>
           <input
             type="file"
             name="foto"
@@ -172,9 +175,13 @@ function Cadastro() {
           />
 
           {erro && <p className="text-red-500 text-center mb-4">{erro}</p>}
-          {sucesso && <p className="text-green-500 text-center mb-4">{sucesso}</p>}
+          {sucesso && (
+            <p className="text-green-500 text-center mb-4">{sucesso}</p>
+          )}
 
-          <div style={{ display: "flex", gap: "10px", justifyContent: "center" }}>
+          <div
+            style={{ display: "flex", gap: "10px", justifyContent: "center" }}
+          >
             <button type="reset" className="form-button cancel">
               Cancelar
             </button>
