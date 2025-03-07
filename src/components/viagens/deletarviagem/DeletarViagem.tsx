@@ -82,7 +82,7 @@ function DeletarViagem() {
 	}
 
 	return (
-		<div className="container flex flex-col justify-center items-center min-h-screen w-full">
+		<div className="flex flex-col justify-center items-center min-h-screen w-full">
 			<h1 className="text-4xl text-center py-4 text-white font-semibold">{translate('deletarViagem')}</h1>
 			<p className="text-center text-2xl mb-4 text-white font-semibold">
 			{translate('confirmacaoDeletar')}

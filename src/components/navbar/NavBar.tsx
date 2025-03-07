@@ -13,7 +13,7 @@ function NavBar() {
   return (
     <div
       id="Pai"
-      className="w-full bg-emerald-700 flex items-center justify-center"
+      className="w-full bg-gradient-to-r from-emerald-600 to-emerald-700  flex items-center justify-center"
     >
       <div className="w-full flex items-center justify-between max-w-8xl px-8">
         <div
@@ -42,7 +42,7 @@ function NavBar() {
               <Link to={"/veiculos"}>{translate("veiculos")}</Link>
             </li>
 
-            <li>
+            <li className="cursor-pointer hover:underline hover:scale-110 transition-all">
               <Link to={"/sobre"}>Sobre</Link>
             </li>
             {usuario.token ? (
@@ -50,7 +50,7 @@ function NavBar() {
                 <li>
                   <Link to={"/perfil"}>
                     <img
-                      src="https://ik.imagekit.io/50n5k5wmb/default-image.jpg?updatedAt=1739541077770"
+                      src={usuario.foto || "https://ik.imagekit.io/ajt99blle/9815472-Photoroom.png?updatedAt=1740150724984"}
                       alt="foto do Perfil do Usuario"
                       className="w-8 h-8 rounded-full cursor-pointer hover:underline hover:scale-110 transition-all"
                     />

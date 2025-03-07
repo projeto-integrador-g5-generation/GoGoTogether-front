@@ -32,11 +32,7 @@ function Perfil() {
 
           <img
             className="relative z-10 border-8 border-white mx-auto mt-[-9rem] rounded-full w-56 h-56"
-            src={
-              usuario.foto && usuario.foto.trim()
-                ? usuario.foto
-                : "https://ik.imagekit.io/ajt99blle/9815472-Photoroom.png?updatedAt=1740150724984"
-            }
+            src={usuario.foto || "https://ik.imagekit.io/ajt99blle/9815472-Photoroom.png?updatedAt=1740150724984"}
             alt={`Foto de perfil de ${usuario.nome}`}
           />
 

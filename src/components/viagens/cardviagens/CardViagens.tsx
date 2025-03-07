@@ -26,7 +26,7 @@ function CardViagens({ viagem }: CardViagemProps) {
 			<div className="flex justify-between items-center p-2 bg-emerald-700">
 				<div className="flex items-center">
 					<img
-						src={viagem.usuario?.foto}
+						src={viagem.usuario?.foto || "https://ik.imagekit.io/ajt99blle/9815472-Photoroom.png?updatedAt=1740150724984"}
 						alt={viagem.usuario?.nome}
 						className="border-transparent rounded-full w-8 h-8"
 					/>

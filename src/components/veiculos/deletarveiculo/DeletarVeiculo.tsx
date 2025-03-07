@@ -82,7 +82,7 @@ function DeletarVeiculo() {
   }
 
   return (
-    <div className="container flex flex-col justify-center items-center min-h-screen w-full">
+    <div className="flex flex-col justify-center items-center min-h-screen w-full">
       <h1 className="text-4xl text-center py-4 font-semibold  text-white">
         {translate("deletarVeiculo")}
       </h1>
