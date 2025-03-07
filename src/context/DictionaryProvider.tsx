@@ -9,6 +9,8 @@ const DictionaryContext = createContext<{
   translate: (key: string) => string;
   setLanguage: (lang: number) => void;
   language: number;
+  theme: string
+  setTheme: (theme: string) => void
 } | null>(null);
 
 
@@ -113,6 +115,8 @@ export const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     return Number(localStorage.getItem("language")) || 0;
   });
 
+  const [theme, setTheme] = useState('claro')
+
   // Quando o idioma mudar, salvamos no navegador para lembrar depois
   useEffect(() => {
     localStorage.setItem("language", language.toString());
@@ -124,7 +128,7 @@ export const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   };
 
   return (
-    <DictionaryContext.Provider value={{ translate, setLanguage, language }}>
+    <DictionaryContext.Provider value={{ translate, setLanguage, language, theme, setTheme }}>
       {children}
     </DictionaryContext.Provider>
   );

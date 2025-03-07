@@ -19,6 +19,7 @@ import Cart from "./components/carrinho/Cart";
 import DictionaryProvider from "./context/DictionaryProvider";
 
 function App() {
+
   return (
     <>
       <BrowserRouter>

@@ -11,7 +11,10 @@ function Perfil() {
 
   const { usuario } = useContext(AuthContext);
 
-  const { setLanguage, translate, language } = useDictionary();
+
+
+  const { setLanguage, translate, language, setTheme } = useDictionary();
+
 
   useEffect(() => {
     if (usuario.token === "") {
@@ -48,11 +51,18 @@ function Perfil() {
 
             <div className="w-full flex flex-col gap-4 justify-center items-center">
               <div className="flex gap-4 mt-[-1rem]">
-                <button className="text-white hover:scale-125">
+                <button className="text-white hover:scale-125 cursor-pointer"
+                onClick={() => {
+                  ToastAlerta("Tema claro ativado!", "sucesso")
+                  setTheme('claro')
+                  }}>
                   <SunDim size={40} />
                 </button>
 
-                <button className="text-white hover:scale-125">
+                <button className="text-white hover:scale-125 cursor-pointer"
+                onClick={() => {
+                  ToastAlerta("Tema escuro ativado!", "sucesso")
+                  setTheme('escuro')}}>
                   <Moon size={39} />
                 </button>
               </div>

@@ -11,7 +11,7 @@ import { ClipLoader } from "react-spinners";
 import { useDictionary } from "../../../context/DictionaryProvider";
 
 function ListarVeiculos() {
-  const { translate } = useDictionary();
+  const { translate, theme } = useDictionary();
 
   const navigate = useNavigate();
 
@@ -72,9 +72,9 @@ function ListarVeiculos() {
         />
       ) : (
         <>
-          <div className="bg-white-a flex justify-center p-4 w-full">
+          <div className={` ${theme === 'claro' ? 'bg-white-a' : "bg-gray-300"} flex justify-center p-4 w-full`}>
             <div className="w-full max-w-6xl flex flex-col sm:flex-row items-center gap-4">
-              <div className="flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400 w-full sm:w-auto">
+              <div className={`flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400 w-full sm:w-auto`}>
                 <input
                   className="w-full px-4 py-2 h-9 focus:outline-none"
                   type="search"

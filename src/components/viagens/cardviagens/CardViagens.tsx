@@ -16,13 +16,13 @@ interface CardViagemProps {
 
 function CardViagens({ viagem }: CardViagemProps) {
 
-	const {translate} = useDictionary();
+	const {translate, theme} = useDictionary();
 	
 
 	const { adicionarProduto } = useContext(CartContext)
 
 	return (
-		<div className="flex flex-col rounded-lg overflow-hidden justify-between mx-4 my-10 hover:shadow-lg bg-white shadow-lg hover:scale-101 transition-all">
+		<div className={`flex flex-col rounded-lg overflow-hidden justify-between mx-4 my-10 hover:shadow-lg ${theme === 'claro' ? 'bg-white' : "bg-gray-300"} shadow-lg hover:scale-101 transition-all`}>
 			<div className="flex justify-between items-center p-2 bg-emerald-700">
 				<div className="flex items-center">
 					<img

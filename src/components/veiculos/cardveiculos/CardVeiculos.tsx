@@ -9,10 +9,10 @@ interface CardVeiculoProps {
 
 function CardVeiculos({ veiculo }: CardVeiculoProps) {
 
-  const { translate } = useDictionary();
+  const { translate, theme } = useDictionary();
 
   return (
-    <div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white mx-4 my-10 shadow-lg hover:scale-101 transition-all">
+    <div className={`${theme === 'claro' ? 'bg-white' : "bg-gray-300"} flex flex-col rounded-lg overflow-hidden justify-between mx-4 my-10 shadow-lg hover:scale-101 transition-all`}>
       <div className="flex justify-between items-center p-2 bg-emerald-700">
         <div className="flex items-center">
           <CarProfile size={28} className="mr-1 fill-blue-200" />
