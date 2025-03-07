@@ -15,7 +15,7 @@ function Sobre() {
         </div>
       </section>
 
-      <section className={`${theme === 'claro' ? 'bg-white' : 'bg-gray-300'} py-16`}>
+      <section className={`${theme === 'claro' ? 'bg-white' : 'bg-gray-600'} py-16`}>
         <h2 className="text-4xl font-bold text-emerald-700 text-center mb-8">
         {translate('equipe')}
         </h2>
