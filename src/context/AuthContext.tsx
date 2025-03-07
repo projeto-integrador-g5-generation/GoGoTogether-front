@@ -1,8 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, ReactNode, useState } from "react";
 import { ToastAlerta } from "../util/ToastAlerta";
 import { login } from "../service/Service";
 import UsuarioLogin from "../models/UsuarioLogin";
-import { useNavigate } from "react-router-dom";
 
 interface AuthContextProps {
   usuario: UsuarioLogin;

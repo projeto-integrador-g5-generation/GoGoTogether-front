@@ -30,16 +30,15 @@ function Login() {
     e.preventDefault();
     setIsLoading(true);
     setErro(null);
-
+  
     try {
       await handleLogin(usuarioLogin);
-      navigate("/home");
+      navigate("/home"); 
     } catch (error: any) {
       console.log(error);
-      setErro("Usuário ou senha incorretos!");
-      navigate("/login");
+      setErro("Usuário ou senha incorretos!"); 
     }
-
+  
     setIsLoading(false);
   }
 

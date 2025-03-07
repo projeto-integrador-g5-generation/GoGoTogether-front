@@ -39,7 +39,7 @@ function ListarViagens() {
   }
 
   useEffect(() => {
-    if (token === null) {
+    if (!token) {
       ToastAlerta("Você precisa estar logado!", "info");
       navigate("/login");
     } else {
