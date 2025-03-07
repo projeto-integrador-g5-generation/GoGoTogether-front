@@ -363,8 +363,7 @@ function FormViagem() {
           <button
             type="submit"
             disabled={!veiculoSelecionado || isLoading}
-            className="flex justify-center rounded disabled:bg-slate-200 bg-cyan-600 
-			hover:bg-cyan-900 text-white font-bold w-1/2 mx-auto py-1 cursor-pointer transition-all"
+            className="flex justify-center rounded disabled:bg-slate-200 bg-emerald-800 hover:bg-emerald-900 text-white font-bold w-1/2 mx-auto py-1 cursor-pointer transition-all"
           >
             {isLoading ? (
               <RotatingLines

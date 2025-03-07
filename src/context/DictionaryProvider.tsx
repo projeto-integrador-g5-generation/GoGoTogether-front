@@ -27,7 +27,7 @@ const dictionary: DictionaryType = {
     slide1Botao: ["Viaje conosco", "Travel with us", "Viaja con nosotros"],  
     slide2Botao: ["Adicionar nova carona", "Add new ride", "Agregar nuevo viaje"],
     cadastrarVeiculo: ["Cadastrar Veículo", "Register Vehicle", "Registrar vehículo"],
-    veiculoNaoEncontrado: ["Veículo não encontrado."],
+    veiculoNaoEncontrado: ["Não encontrado", "Not found", "No encontrado"],
     pesquisar: ["Pesquisar", "Search", "Buscar"],
     ano: ["Ano", "Year", "Año"],  
     placa: ["Placa", "License Plate", "Matrícula"],

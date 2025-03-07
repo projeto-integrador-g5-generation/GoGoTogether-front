@@ -15,7 +15,7 @@ function Slide1() {
     >
       <div className="w-full flex justify-center bg-slide min-h-screen">
         <div className="flex flex-col gap-5 w-full justify-center items-center text-center">
-          <h1 className="text-white text-2xl md:text-6xl   text-center  font-bold w-full   drop-shadow-lg">
+          <h1 className="text-white text-2xl md:text-6xl  text-center  font-bold w-full  drop-shadow-lg max-w-8xl">
             {translate("slide1")}
           </h1>
 

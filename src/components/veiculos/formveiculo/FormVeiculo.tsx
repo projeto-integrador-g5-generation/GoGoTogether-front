@@ -285,7 +285,7 @@ function FormVeiculo() {
 
           <button
             className="rounded text-slate-100 bg-emerald-600 
-          hover:bg-emerald-900 w-1/2 py-2 mx-auto flex justify-center cursor-pointer transition-all"
+          hover:bg-emerald-900 w-1/2 py-2 mx-auto flex justify-center cursor-pointer transition-all shadow-md"
             type="submit"
           >
             {isLoading ? (

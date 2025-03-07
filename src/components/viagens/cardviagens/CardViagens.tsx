@@ -22,7 +22,7 @@ function CardViagens({ viagem }: CardViagemProps) {
 	const { adicionarProduto } = useContext(CartContext)
 
 	return (
-		<div className="flex flex-col rounded-lg overflow-hidden justify-between bg-transparent mx-4 my-10 hover:shadow-lg bg-white">
+		<div className="flex flex-col rounded-lg overflow-hidden justify-between mx-4 my-10 hover:shadow-lg bg-white shadow-lg hover:scale-101 transition-all">
 			<div className="flex justify-between items-center p-2 bg-emerald-700">
 				<div className="flex items-center">
 					<img
@@ -118,7 +118,7 @@ function CardViagens({ viagem }: CardViagemProps) {
 			</div>
 
 			<button
-				className="w-full text-white bg-blue-500 hover:bg-blue-600 flex items-center justify-center py-2 cursor-pointer transition-all"
+				className="w-full text-white bg-emerald-700 hover:bg-emerald-800 flex items-center justify-center py-2 cursor-pointer transition-all"
 				onClick={() => adicionarProduto(viagem)}
 			>
 				{translate('contratar')}

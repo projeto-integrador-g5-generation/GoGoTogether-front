@@ -95,7 +95,7 @@ function ListarVeiculos() {
               </div>
 
               <button
-                className="cursor-pointer px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-800 focus:outline-none font-bold w-full sm:w-auto transition-all"
+                className="cursor-pointer px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-800 focus:outline-none font-bold w-full sm:w-auto transition-all shadow-md"
                 onClick={() => navigate("/veiculos/cadastrar")}
               >
                 {translate("cadastrarVeiculo")}
@@ -105,8 +105,8 @@ function ListarVeiculos() {
 
           {listaVeiculo.length === 0 ? (
             <div className="flex justify-center items-center p-4 w-full min-h-[90vh]">
-              <p className="text-3xl text-black text-center">
-                Veículo não encontrado.
+              <p className="text-3xl text-white font-semibold text-center">
+              {translate("veiculoNaoEncontrado")}
               </p>
             </div>
           ) : (
