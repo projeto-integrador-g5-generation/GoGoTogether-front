@@ -3,7 +3,7 @@ import { ChangeEvent, useContext, useState } from "react";
 import { Eye, EyeClosed } from "phosphor-react";
 import UsuarioLogin from "../../models/UsuarioLogin";
 import { RotatingLines } from "react-loader-spinner";
-import "./login.css";
+import "./Login.css";
 import { AuthContext } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
