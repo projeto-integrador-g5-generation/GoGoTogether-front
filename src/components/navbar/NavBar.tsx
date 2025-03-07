@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import NavBarMobile from "./navbarmobile/NavBarMobile";
 import { useContext } from "react";
 import { CartContext } from "../../context/CardContext";
+import { useDictionary } from "../../context/DictionaryProvider";
 
 function NavBar() {
+  const {translate} = useDictionary();
   const { quantidadeItems } = useContext(CartContext);
 
   return (
@@ -29,10 +31,10 @@ function NavBar() {
         {/* falta colocar o Link=to"" tirar a ul e as li e trocar po Link=to"" e ajustar div lista*/}
         <ul id="" className="flex gap-3 text-white items-center">
           <li className="cursor-pointer">
-            <Link to={"/viagens"}>Viagens</Link>
+            <Link to={"/viagens"}>{translate('viagens')}</Link>
           </li>
           <li className="cursor-pointer">
-            <Link to={"/veiculos"}>Veículos</Link>
+            <Link to={"/veiculos"}>{translate('veiculos')}</Link>
           </li>
           <li>
             <Link to={"/perfil"}>

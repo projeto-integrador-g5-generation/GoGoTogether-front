@@ -1,18 +1,22 @@
 import { Link } from "react-router-dom";
 import Veiculo from "../../../models/Veiculo";
 import { CarProfile, Pencil, Trash } from "@phosphor-icons/react";
+import { useDictionary } from "../../../context/DictionaryProvider";
 
 interface CardVeiculoProps {
   veiculo: Veiculo;
 }
 
 function CardVeiculos({ veiculo }: CardVeiculoProps) {
+
+  const { translate } = useDictionary();
+
   return (
     <div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white mx-4 my-10 hover:shadow-lg">
       <div className="flex justify-between items-center p-2 bg-emerald-700">
         <div className="flex items-center">
           <CarProfile size={28} className="mr-1 fill-blue-200" />
-          <p className="text-xl text-left text-white font-bold p-2">Veículo</p>
+          <p className="text-xl text-left text-white font-bold p-2">{translate('veiculos')}</p>
         </div>
 
         <div className="flex justify-center gap-2 items-center">
@@ -42,8 +46,8 @@ function CardVeiculos({ veiculo }: CardVeiculoProps) {
               {veiculo.marca} - {veiculo.modelo}
             </p>
           </div>
-          <p className="text-sm text-center p-2">Ano: {veiculo.ano}</p>
-          <p className="text-sm text-center p-2">Placa: {veiculo.placa}</p>
+          <p className="text-sm text-center p-2">{translate('ano')}: {veiculo.ano}</p>
+          <p className="text-sm text-center p-2">{translate('placa')}: {veiculo.placa}</p>
         </div>
       </div>
     </div>

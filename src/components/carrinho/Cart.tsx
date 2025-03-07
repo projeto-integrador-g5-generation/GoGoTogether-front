@@ -1,15 +1,18 @@
 import { useContext } from "react";
 import { CartContext, Items } from "../../context/CardContext";
 import CardCart from "./cardcart/CardCart";
+import { useDictionary } from "../../context/DictionaryProvider";
 
 function Cart() {
   const { items, quantidadeItems, valorTotal, limparCart } =
     useContext(CartContext);
 
+      const {translate} = useDictionary();
+    
   return (
     <>
       <div className="bg-transparent min-h-screen flex flex-col justify-center">
-        <h1 className="text-4xl text-center my-4">Carrinho de Compras</h1>
+        <h1 className="text-4xl text-center my-4">{translate('carrinhoDeCompras')}</h1>
 
         <h2 className="text-2xl text-center my-4">
           {items.length === 0 ? "O Carrinho está vazio!" : ""}
@@ -25,16 +28,16 @@ function Cart() {
           <div className="container mx-auto my-8 py-4 w-[60vw] grid grid-cols-2 border rounded-lg bg-white text-lg">
             <div className="w-full flex flex-col ml-8">
               <h2 className="text-2xl text-center font-bold py-2">
-                Resumo da Compra
+              {translate('resumoCompra')}
               </h2>
               <p className="pb-2">
                 <span className="font-semibold">
-                  Total de items adicionados:{" "}
+                {translate('totalItemsAdicionados')}:{" "}
                 </span>
                 {quantidadeItems}
               </p>
               <p>
-                <span className="font-semibold">Subtotal: </span>
+                <span className="font-semibold">{translate('subtotal')}: </span>
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
@@ -42,7 +45,7 @@ function Cart() {
               </p>
               <hr className="border-xl border-slate-800 py-1" />
               <p>
-                <span className="font-semibold">Total: </span>
+                <span className="font-semibold">{translate('total')}: </span>
                 {Intl.NumberFormat("pt-BR", {
                   style: "currency",
                   currency: "BRL",
@@ -56,7 +59,7 @@ function Cart() {
                 disabled={items.length === 0 ? true : false}
                 onClick={limparCart}
               >
-                Finalizar Compra
+                {translate('finalizarCompra')}
               </button>
             </div>
           </div>

@@ -4,6 +4,7 @@ import { CartContext, Items } from "../../../context/CardContext";
 import { formatarData, formatarHora } from "../../../util/FormatarData";
 import { Clock, MapPin } from "phosphor-react";
 import { formatarMoeda } from "../../../util/FormatarMoeda";
+import { useDictionary } from "../../../context/DictionaryProvider";
 
 interface CardProdutosProps {
   item: Items;
@@ -12,19 +13,22 @@ interface CardProdutosProps {
 function CardCart({ item }: CardProdutosProps) {
   const { adicionarItem, removerItem } = useContext(CartContext);
 
+  const {translate} = useDictionary();
+  
+
   return (
     <div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white">
       <div className="p-2">
         <div className="min-h-12 flex items-center justify-start">
           <MapPin size={24} className="fill-red-700" />
           <p className="text-sm text-left uppercase font-semibold">
-            Partida: {item.origem}
+          {translate('origem')}: {item.origem}
           </p>
         </div>
         <div className="min-h-12 flex items-center justify-start">
           <MapPin size={24} className="fill-green-700" />
           <p className="text-sm text-left uppercase font-semibold">
-            Destino: {item.destino}
+          {translate('destino')}: {item.destino}
           </p>
         </div>
 
@@ -43,20 +47,20 @@ function CardCart({ item }: CardProdutosProps) {
         </h3>
 
         <div className="flex flex-col bg-sky-100 mt-3 p-2 rounded-lg">
-          <h4 className="text-sm font-semibold py-1">Detalhes da Carona:</h4>
+          <h4 className="text-sm font-semibold py-1">{translate('detalhesCarona')}:</h4>
           <p className="text-sm text-left py-1">
-            Distância: {item.distancia} Km
+          {translate('distancia')}: {item.distancia} Km
           </p>
           <p className="text-sm text-left py-1">
-            Velocidade Média: {item.velocidade_media} Km²
+          {translate('velocidadeMedia')}: {item.velocidade_media} Km²
           </p>
           <p className="text-sm text-left py-1">
-            Tempo Estimado: {item.duracao_estimada}
+          {translate('tempoEstimado')}: {item.duracao_estimada}
           </p>
         </div>
 
         <div className="flex flex-col items-start bg-green-200 mt-3 p-2 rounded-lg">
-          <h4 className="text-sm font-semibold py-1">Veículo:</h4>
+          <h4 className="text-sm font-semibold py-1">{translate('veiculo')}:</h4>
 
           <div className="flex items-center">
             <img
@@ -81,7 +85,7 @@ function CardCart({ item }: CardProdutosProps) {
             }).format(item.preco)}
           </h3>
           <h4 className="my-2 text-center">
-            <span className="font-semibold">Quantidade:</span> {item.quantidade}
+            <span className="font-semibold">{translate('quantidade')}:</span> {item.quantidade}
           </h4>
         </div>
       </div>

@@ -9,13 +9,14 @@ import Viagem from '../../../models/Viagens';
 import { atualizar, buscar, cadastrar } from '../../../service/Service';
 import { formatarDataSubmit } from '../../../util/FormatarData';
 import { ToastAlerta } from '../../../util/ToastAlerta';
+import { useDictionary } from '../../../context/DictionaryProvider';
 
 
 function FormViagem() {
 	const navigate = useNavigate();
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
-
+	const {translate} = useDictionary();
 
 	const [veiculo, setVeiculo] = useState<Veiculo>({
 		id: 0,
@@ -230,12 +231,12 @@ function FormViagem() {
 				onSubmit={gerarNovaViagem}
 			>
 				<div className="flex flex-col gap-1">
-					<label htmlFor="Origem">Origem</label>
+					<label htmlFor="Origem">{translate('origem')}</label>
 					<input
 						value={viagem.origem}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						type="text"
-						placeholder="Insira o local da partida"
+						placeholder={translate('localPartida')}
 						name="origem"
 						required
 						className="border-2 border-slate-700 rounded p-1 focus:outline-none focus:ring-2 focus:ring-zinc-400"
@@ -243,12 +244,12 @@ function FormViagem() {
 				</div>
 
 				<div className="flex flex-col gap-1">
-					<label htmlFor="destino">Destino</label>
+					<label htmlFor="destino">{translate('destino')}</label>
 					<input
 						value={viagem.destino}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						type="text"
-						placeholder="Insira o Destino"
+						placeholder={translate('localDestino')}
 						name="destino"
 						required
 						className="border-2 border-slate-700 rounded p-1 focus:outline-none focus:ring-2 focus:ring-zinc-400"
@@ -257,7 +258,7 @@ function FormViagem() {
 
 				<div className="flex flex-col gap-1">
 					<label htmlFor="data_hora_partida">
-						Data e Horário da partida
+					{translate('dataHorarioPartida')}
 					</label>
 					<input
 						type="datetime-local"
@@ -271,13 +272,13 @@ function FormViagem() {
 				</div>
 
 				<div className="flex flex-col gap-1">
-					<label htmlFor="preco">Valor do trajeto (R$)</label>
+					<label htmlFor="preco">{translate('valorTrajeto')} (R$)</label>
 					<input
 						value={viagem.preco}
 						onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 						type="number"
 						step=".01"
-						placeholder="Adicione o valor do serviço"
+						placeholder={translate('valorServico')}
 						name="preco"
 						required
 						className="border-2 border-slate-700 rounded p-1 focus:outline-none focus:ring-2 focus:ring-zinc-400"
@@ -285,7 +286,7 @@ function FormViagem() {
 				</div>
 
 				<div className="flex flex-col gap-1">
-					<p>Status</p>
+					<p>{translate('status')}</p>
 					<select
 						name="status_viagem"
 						id="status_viagem"
@@ -293,22 +294,22 @@ function FormViagem() {
 						onChange={handleStatusChange}
 						value={viagem.status_viagem || '1'}
 					>
-						<option value="1">Agendada</option>
-						<option value="2">Em Andamento</option>
-						<option value="3">Concluída</option>
-						<option value="4">Cancelada</option>
+						<option value="1">{translate('agendada')}</option>
+						<option value="2">{translate('emAndamento')}</option>
+						<option value="3">{translate('concluida')}</option>
+						<option value="4">{translate('cancelada')}</option>
 					</select>
 				</div>
 
 				<div className="flex justify-between flex-nowrap">
 					<div className="flex flex-col gap-1 w-1/2 px-1">
-						<label htmlFor="distancia">Distância (Km)</label>
+						<label htmlFor="distancia">{translate('distancia')} (Km)</label>
 						<input
 							value={viagem.distancia}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							type="number"
 							step=".01"
-							placeholder="Distância"
+							placeholder={translate('distancia')}
 							name="distancia"
 							required
 							className="border-2 border-slate-700 rounded p-1 focus:outline-none focus:ring-2 focus:ring-zinc-400"
@@ -317,14 +318,14 @@ function FormViagem() {
 
 					<div className="flex flex-col gap-1 w-1/2 px-1">
 						<label htmlFor="velocidade_media">
-							Velocidade (Km²)
+						{translate('velocidade')} (Km²)
 						</label>
 						<input
 							value={viagem.velocidade_media}
 							onChange={(e: ChangeEvent<HTMLInputElement>) => atualizarEstado(e)}
 							type="number"
 							step=".01"
-							placeholder="Velocidade Média"
+							placeholder={translate('velocidadeMedia')} 
 							name="velocidade_media"
 							required
 							className="border-2 border-slate-700 rounded p-1 focus:outline-none focus:ring-2 focus:ring-zinc-400"
@@ -333,7 +334,7 @@ function FormViagem() {
 				</div>
 
 				<div className="flex flex-col gap-1">
-					<p>Veículo</p>
+					<p>{translate('veiculo')}</p>
 					<select
 						name="veiculo"
 						id="veiculo"
@@ -341,7 +342,7 @@ function FormViagem() {
 						onChange={handleVeiculoChange}
 						value={viagem.veiculo?.id}
 					>
-						<option value="" selected disabled>Selecione um Veículo</option>
+						<option value="" selected disabled>{translate('selecioneVeiculo')}</option>
 
 						{veiculos.map((veiculo) => (
 							<option key={veiculo.id} value={veiculo.id}>

@@ -16,6 +16,7 @@ import DeletarViagem from "./components/viagens/deletarviagem/DeletarViagem";
 import FormViagem from "./components/viagens/formviagem/FormViagem";
 import { CartProvider } from "./context/CardContext";
 import Cart from "./components/carrinho/Cart";
+import DictionaryProvider from "./context/DictionaryProvider";
 
 function App() {
   return (
@@ -24,7 +25,8 @@ function App() {
       <CartProvider>
         <AuthProvider>
           <ToastContainer />
-          
+          <DictionaryProvider>
+
             <NavBar />
             <div>
               <Routes>
@@ -52,7 +54,8 @@ function App() {
               </Routes>
             </div>
             <Footer />
-          
+            </DictionaryProvider>
+
         </AuthProvider>
       </CartProvider>
       </BrowserRouter>

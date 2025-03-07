@@ -7,10 +7,13 @@ import { AuthContext } from '../../../context/AuthContext'
 import Viagem from '../../../models/Viagens'
 import { buscar, deletar } from '../../../service/Service'
 import { ToastAlerta } from '../../../util/ToastAlerta'
+import { useDictionary } from '../../../context/DictionaryProvider'
 
 
 function DeletarViagem() {
 	const navigate = useNavigate()
+	const {translate} = useDictionary();
+	
 
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [viagem, setViagem] = useState<Viagem>({} as Viagem)
@@ -80,24 +83,24 @@ function DeletarViagem() {
 
 	return (
 		<div className="container w-2/4 mx-auto">
-			<h1 className="text-4xl text-center py-4">Deletar Viagem</h1>
+			<h1 className="text-4xl text-center py-4">{translate('deletarViagem')}</h1>
 			<p className="text-center font-semibold mb-4">
-				Você tem certeza de que deseja apagar a carona a seguir?
+			{translate('confirmacaoDeletar')}
 			</p>
 			<div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
 				<header className="py-2 px-6 bg-cyan-900 text-white font-bold text-2xl">
-					Carona
+				{translate('carona')}
 				</header>
-				<p className="p-4 text-2xl bg-white h-full">Origem: {viagem.origem}</p>
-				<p className="px-4 py-2 text-2xl bg-white h-full">Destino: {viagem.destino}</p>
-				<p className="p-4 text-2xl bg-white h-full">Criado por: {viagem.usuario?.nome}</p>
+				<p className="p-4 text-2xl bg-white h-full">{translate('origem')}: {viagem.origem}</p>
+				<p className="px-4 py-2 text-2xl bg-white h-full">{translate('destino')}: {viagem.destino}</p>
+				<p className="p-4 text-2xl bg-white h-full">{translate('criadoPor')}: {viagem.usuario?.nome}</p>
 
 				<div className="flex">
 					<button
 						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2"
 						onClick={retornar}
 					>
-						Não
+						{translate('nao')}
 					</button>
 					<button
 						className="w-full text-slate-100 bg-teal-500 hover:bg-teal-700 flex items-center justify-center"
@@ -112,7 +115,7 @@ function DeletarViagem() {
 								visible={true}
 							/>
 						) : (
-							<span>Sim</span>
+							<span>{translate('sim')}</span>
 						)}
 					</button>
 				</div>

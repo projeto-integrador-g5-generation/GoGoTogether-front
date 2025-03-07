@@ -8,8 +8,11 @@ import { buscar } from "../../../service/Service";
 import { AuthContext } from "../../../context/AuthContext";
 import { ToastAlerta } from "../../../util/ToastAlerta";
 import { ClipLoader } from "react-spinners";
+import { useDictionary } from "../../../context/DictionaryProvider";
 
 function ListarVeiculos() {
+  const { translate } = useDictionary();
+
   const navigate = useNavigate();
 
   const [isLoading, setIsloading ] = useState(false)
@@ -77,7 +80,7 @@ function ListarVeiculos() {
                         <input
                             className="w-full px-4 py-2 h-9 focus:outline-none"
                             type="search"
-                            placeholder="Pesquisar"
+                            placeholder={translate('pesquisar')}
                             id="busca"
                             name="busca"
                             onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -98,7 +101,7 @@ function ListarVeiculos() {
                         className="cursor-pointer px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-800 focus:outline-none font-bold w-full sm:w-auto"
                         onClick={() => navigate("/veiculos/cadastrar")}
                     >
-                        Cadastrar Veículo
+                        {translate('cadastrarVeiculo')}
                     </button>
                 </div>
             </div>

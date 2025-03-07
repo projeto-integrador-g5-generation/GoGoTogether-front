@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import { useDictionary } from "../../../context/DictionaryProvider";
 
 function Slide2() {
+  const { translate } = useDictionary();
+
   return (
     <div
       id="containerPai"
@@ -12,11 +15,11 @@ function Slide2() {
     >
       <div className="flex flex-col justify-center w-4/5 items-center gap-5 text-center">
         <h1 className="text-white text-2xl md:text-6xl font-bold drop-shadow-lg">
-          Movendo pessoas e conectando caminhos...
+        {translate('slide2')}
         </h1>
 
         <button className="border  p-2 bg-white cursor-pointer rounded drop-shadow-lg text-md md:text-2xl">
-          <Link to={"/viagens"}>Adicionar nova carona</Link>
+          <Link to={"/viagens"}>{translate('slide2Botao')}</Link>
         </button>
       </div>
     </div>

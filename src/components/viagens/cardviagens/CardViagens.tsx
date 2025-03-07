@@ -6,6 +6,7 @@ import { formatarData, formatarHora } from '../../../util/FormatarData'
 import { formatarMoeda } from '../../../util/FormatarMoeda'
 import { useContext } from 'react'
 import { CartContext } from '../../../context/CardContext'
+import { useDictionary } from '../../../context/DictionaryProvider'
 
 
 
@@ -14,6 +15,9 @@ interface CardViagemProps {
 }
 
 function CardViagens({ viagem }: CardViagemProps) {
+
+	const {translate} = useDictionary();
+	
 
 	const { adicionarProduto } = useContext(CartContext)
 
@@ -56,13 +60,13 @@ function CardViagens({ viagem }: CardViagemProps) {
 					<div className="min-h-12 flex items-center justify-start">
 						<MapPin size={24} className="fill-red-700" />
 						<p className="text-sm text-left uppercase font-semibold">
-							Partida: {viagem.origem}
+						{translate('origem')}: {viagem.origem}
 						</p>
 					</div>
 					<div className="min-h-12 flex items-center justify-start">
 						<MapPin size={24} className="fill-green-700" />
 						<p className="text-sm text-left uppercase font-semibold">
-							Destino: {viagem.destino}
+						{translate('destino')}: {viagem.destino}
 						</p>
 					</div>
 
@@ -83,21 +87,21 @@ function CardViagens({ viagem }: CardViagemProps) {
 
 					<div className="flex flex-col bg-sky-100 mt-3 p-2 rounded-lg">
 						<h4 className="text-sm font-semibold py-1">
-							Detalhes da Carona:
+						{translate('detalhesCarona')}:
 						</h4>
 						<p className="text-sm text-left py-1">
-							Distância: {viagem.distancia} Km
+						{translate('distancia')}: {viagem.distancia} Km
 						</p>
 						<p className="text-sm text-left py-1">
-							Velocidade Média: {viagem.velocidade_media} Km²
+						{translate('velocidadeMedia')}: {viagem.velocidade_media} Km²
 						</p>
 						<p className="text-sm text-left py-1">
-							Tempo Estimado: {viagem.duracao_estimada} min
+						{translate('tempoEstimado')}: {viagem.duracao_estimada} min
 						</p>
 					</div>
 
 					<div className="flex flex-col items-start bg-green-200 mt-3 p-2 rounded-lg">
-						<h4 className="text-sm font-semibold py-1">Veículo:</h4>
+						<h4 className="text-sm font-semibold py-1">{translate('veiculo')}:</h4>
 
 						<div className="flex items-center">
 							<img
@@ -117,7 +121,7 @@ function CardViagens({ viagem }: CardViagemProps) {
 				className="w-full text-white bg-blue-500 hover:bg-blue-600 flex items-center justify-center py-2"
 				onClick={() => adicionarProduto(viagem)}
 			>
-				Contratar
+				{translate('contratar')}
 			</button>
 		</div>
 	)

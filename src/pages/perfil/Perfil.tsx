@@ -4,11 +4,14 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastAlerta } from "./../../util/ToastAlerta";
 import { AuthContext } from "../../context/AuthContext";
+import { useDictionary } from "../../context/DictionaryProvider";
 
 function Perfil() {
   const navigate = useNavigate();
 
   const { usuario } = useContext(AuthContext);
+
+  const { setLanguage, translate, language } = useDictionary();
 
   useEffect(() => {
     if (usuario.token === "") {
@@ -38,8 +41,8 @@ function Perfil() {
 
         <div className="relative  flex-col md:flex-row flex items-center justify-between bg-teal-700 mt-[-6rem] text-2xl text-black p- py-10 pt-30 gap-10">
           <div className="flex flex-col w-full justify-center items-center">
-            <p className="w-full text-center">Nome: {usuario.nome}</p>
-            <p className="w-full text-center">Email: {usuario.usuario}</p>
+          <p className="w-full text-center">{translate('nome')}: {usuario.nome}</p>
+          <p className="w-full text-center">{translate('email')}: {usuario.usuario}</p>
           </div>
 
           <div className="w-full flex flex-col gap-4 justify-center items-center">
@@ -53,9 +56,14 @@ function Perfil() {
               </button>
             </div>
 
+            <label htmlFor="language-select" className="mt-2">
+            </label>
+
             <select
               id="language-select"
               className="w-45 h-10 p-1 bg-white text-black rounded-md cursor-pointer text-sm"
+              value={ language }
+              onChange={(e) => setLanguage(Number(e.target.value))}
             >
               <option value="0">🇧🇷 Português</option>
               <option value="1">🇺🇸 English</option>
@@ -66,7 +74,7 @@ function Perfil() {
               href="/login"
               className="text-white text-lg hover:text-red-500 transition-colors duration-300 mt-4"
             >
-              Sair
+               {translate('sair')}
             </a>
           </div>
         </div>
