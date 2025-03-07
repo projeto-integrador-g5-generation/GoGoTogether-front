@@ -32,11 +32,12 @@ function Login() {
     setErro(null);
 
     try {
-      handleLogin(usuarioLogin);
+      await handleLogin(usuarioLogin);
       navigate("/home");
     } catch (error: any) {
       console.log(error);
       setErro("Usuário ou senha incorretos!");
+      navigate("/login");
     }
 
     setIsLoading(false);
