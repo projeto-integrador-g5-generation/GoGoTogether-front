@@ -115,7 +115,7 @@ function Login() {
         <div className="text-center mt-4">
           <p>
             Ainda não tem uma conta?{" "}
-            <a href="/cadastro" className="text-teal-500 hover:underline">
+            <a onClick={() => navigate('/cadastro')} className="text-teal-500 hover:underline">
               Cadastre-se
             </a>
           </p>
