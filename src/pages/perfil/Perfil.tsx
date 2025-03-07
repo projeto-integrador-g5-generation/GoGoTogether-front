@@ -9,8 +9,7 @@ import { useDictionary } from "../../context/DictionaryProvider";
 function Perfil() {
   const navigate = useNavigate();
 
-  const { usuario } = useContext(AuthContext);
-
+  const { usuario, handleLogout } = useContext(AuthContext);
 
 
   const { setLanguage, translate, language, setTheme } = useDictionary();
@@ -81,8 +80,11 @@ function Perfil() {
               </select>
 
               <a
-                href="/login"
-                className="text-white text-lg hover:text-red-500 transition-colors duration-300 mt-4"
+                onClick={() => {
+                  ToastAlerta('Ação concluida!', 'sucesso')
+                  handleLogout()
+                }}
+                className="text-white text-lg hover:text-red-500 transition-colors duration-300 mt-4 cursor-pointer"
               >
                 {translate("sair")}
               </a>
