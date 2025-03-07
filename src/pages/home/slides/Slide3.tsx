@@ -13,7 +13,7 @@ function Slide3() {
           "url('https://ik.imagekit.io/50n5k5wmb/close-up-friends-taking-selfie%201.jpg?updatedAt=1741195334196')",
       }}
     >
-      <div className="w-full flex justify-center bg-slide min-h-screen">
+      <div className="w-full flex justify-center bg-slide min-h-screen p-4">
         <div className="flex flex-col justify-center items-center gap-5">
           <h1 className="text-white text-2xl md:text-6xl font-bold drop-shadow-lg text-center max-w-8xl" >
             {translate("slide3BoasVindas")}

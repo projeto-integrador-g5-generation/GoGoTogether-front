@@ -13,7 +13,7 @@ function Slide1() {
           "url('https://ik.imagekit.io/50n5k5wmb/unnamed-2021-12-22T162414.814.jpg?updatedAt=1741197238816')",
       }}
     >
-      <div className="w-full flex justify-center bg-slide min-h-screen">
+      <div className="w-full flex justify-center bg-slide min-h-screen p-4">
         <div className="flex flex-col gap-5 w-full justify-center items-center text-center">
           <h1 className="text-white text-2xl md:text-6xl  text-center  font-bold w-full  drop-shadow-lg max-w-8xl">
             {translate("slide1")}
