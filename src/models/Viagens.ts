@@ -16,10 +16,4 @@ export default interface Viagem{
     duracao_estimada?: number
     veiculo: Veiculo
     usuario: UsuarioLogin
-    // carrinho
-    foto: string
-    nome: string
-    categoria: {
-        tipo: string
-    }
 }

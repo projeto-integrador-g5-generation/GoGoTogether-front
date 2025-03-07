@@ -62,7 +62,7 @@ const Carrossel = () => {
         
         <button
           onClick={handlePrevious}
-          className="absolute cursor-pointer left-3 top-1/2 transform -translate-y-1/2 bg-cyan-600 text-white p-2 rounded-full hover:bg-cyan-500 active:scale-95 transition duration-200 ease-in-out flex items-center justify-center w-12 h-12"
+          className="absolute cursor-pointer left-3 top-1/2 transform -translate-y-1/2 bg-emerald-700 text-white p-2 rounded-full hover:bg-emerald-900 active:scale-95 transition duration-200 ease-in-out flex items-center justify-center w-12 h-12"
             >
               <FaArrowLeft size={20} />
             </button>
@@ -114,7 +114,7 @@ const Carrossel = () => {
 
             <button
                 onClick={handleNext}
-                className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 bg-cyan-600 text-white p-2 rounded-full hover:bg-cyan-500 active:scale-95 transition duration-200 ease-in-out flex items-center justify-center w-12 h-12"
+                className="absolute cursor-pointer right-3 top-1/2 transform -translate-y-1/2 bg-emerald-700 text-white p-2 rounded-full hover:bg-emerald-900 active:scale-95 transition duration-200 ease-in-out flex items-center justify-center w-12 h-12"
             >
              <FaArrowRight size={20} /> 
             </button>

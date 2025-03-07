@@ -82,12 +82,12 @@ function DeletarViagem() {
 	}
 
 	return (
-		<div className="container w-2/4 mx-auto">
-			<h1 className="text-4xl text-center py-4">{translate('deletarViagem')}</h1>
-			<p className="text-center font-semibold mb-4">
+		<div className="container flex flex-col justify-center items-center min-h-screen w-full">
+			<h1 className="text-4xl text-center py-4 text-white font-semibold">{translate('deletarViagem')}</h1>
+			<p className="text-center text-2xl mb-4 text-white font-semibold">
 			{translate('confirmacaoDeletar')}
 			</p>
-			<div className="border flex flex-col rounded-2xl overflow-hidden justify-between">
+			<div className="border flex flex-col rounded-2xl overflow-hidden justify-between w-full max-w-100 bg-white mt-5 shadow-lg">
 				<header className="py-2 px-6 bg-cyan-900 text-white font-bold text-2xl">
 				{translate('carona')}
 				</header>
@@ -97,13 +97,13 @@ function DeletarViagem() {
 
 				<div className="flex">
 					<button
-						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2"
+						className="text-slate-100 bg-red-400 hover:bg-red-600 w-full py-2 cursor-pointer transition-all"
 						onClick={retornar}
 					>
 						{translate('nao')}
 					</button>
 					<button
-						className="w-full text-slate-100 bg-teal-500 hover:bg-teal-700 flex items-center justify-center"
+						className="w-full text-slate-100 bg-teal-500 hover:bg-teal-700 flex items-center justify-center cursor-pointer transition-all"
 						onClick={deletarViagem}
 					>
 						{isLoading ? (

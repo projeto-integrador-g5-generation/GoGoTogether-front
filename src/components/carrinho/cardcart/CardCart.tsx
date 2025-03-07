@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { CartContext, Items } from "../../../context/CardContext";
 import { formatarData, formatarHora } from "../../../util/FormatarData";
 import { Clock, MapPin } from "phosphor-react";
-import { formatarMoeda } from "../../../util/FormatarMoeda";
 import { useDictionary } from "../../../context/DictionaryProvider";
 
 interface CardProdutosProps {
@@ -17,7 +16,7 @@ function CardCart({ item }: CardProdutosProps) {
   
 
   return (
-    <div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white">
+    <div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white shadow-lg hover:scale-101 transition-all">
       <div className="p-2">
         <div className="min-h-12 flex items-center justify-start">
           <MapPin size={24} className="fill-red-700" />
@@ -42,9 +41,6 @@ function CardCart({ item }: CardProdutosProps) {
             <p>{formatarHora(item.data_hora_partida)}</p>
           </div>
         </div>
-        <h3 className="py-2 text-xl text-left font-bold uppercase">
-          {formatarMoeda(item.preco)}
-        </h3>
 
         <div className="flex flex-col bg-sky-100 mt-3 p-2 rounded-lg">
           <h4 className="text-sm font-semibold py-1">{translate('detalhesCarona')}:</h4>
@@ -75,9 +71,8 @@ function CardCart({ item }: CardProdutosProps) {
         </div>
       </div>
 
-      <div className="py-4">
-        <div className="p-4">
-          <p className="text-sm text-center uppercase">{item.nome}</p>
+      <div className="py-2">
+        <div className="p-2">
           <h3 className="text-xl text-center font-bold uppercase">
             {Intl.NumberFormat("pt-BR", {
               style: "currency",
@@ -91,13 +86,13 @@ function CardCart({ item }: CardProdutosProps) {
       </div>
       <div className="flex flex-wrap">
         <button
-          className="w-1/2 text-slate-100 bg-blue-500 hover:bg-blue-700 flex items-center justify-center py-2"
+          className="w-1/2 text-slate-100 bg-blue-400 hover:bg-blue-600 flex items-center p-1 justify-center cursor-pointer transition-all"
           onClick={() => adicionarItem(item.id)}
         >
           <Plus size={32} />
         </button>
         <button
-          className="w-1/2 text-slate-100 bg-red-500 hover:bg-red-700 flex items-center justify-center py-2"
+          className="w-1/2 text-slate-100 bg-red-400 hover:bg-red-600 flex items-center p-1 justify-center cursor-pointer transition-all"
           onClick={() => removerItem(item.id)}
         >
           <Minus size={32} />

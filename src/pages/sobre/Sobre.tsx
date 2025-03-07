@@ -2,14 +2,11 @@ import { useDictionary } from "../../context/DictionaryProvider";
 import Carrossel from "./carrosel/Carrossel";
 
 function Sobre() {
-//   const { translate } = useDictionary();
-
   const {translate} = useDictionary();
-
 
   return (
     <>
-      <section className="bg-gradient-to-r from-cyan-400 to-cyan-700 text-white py-16">
+      <section className="text-white font-semibold py-16">
         <div className="text-center">
           <h1 className="text-5xl font-bold mb-4"> {translate('sobre')}</h1>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed text-center">
@@ -19,7 +16,7 @@ function Sobre() {
       </section>
 
       <section className="bg-gray-100 py-16">
-        <h2 className="text-4xl font-bold text-gray-800 text-center mb-8">
+        <h2 className="text-4xl font-bold text-emerald-700 text-center mb-8">
         {translate('equipe')}
         </h2>
 
@@ -28,12 +25,12 @@ function Sobre() {
 
       <section className="py-16 px-6 bg-gradient-to-r">
         <div className="text-center mb-7">
-          <h2 className="text-4xl font-bold mb-4 text-gray-800">
+          <h2 className="text-4xl font-bold mb-4 text-white">
           {translate('conhecaEquipe')}
           
           </h2>
         </div>
-        <div className="text-xl max-w-3xl mx-auto text-gray-700">
+        <div className="text-xl max-w-3xl mx-auto text-white font-semibold">
           <p className="leading-relaxed text-center">{translate('texto2')}</p>
         </div>
       </section>

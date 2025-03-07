@@ -24,7 +24,7 @@ function CardEquipe({ foto, nome, linkedin, github }: CardEquipeProps) {
               href={linkedin}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xl text-blue-700 hover:text-blue-500 transition duration-300"
+              className="text-xl text-teal-700 hover:text-teal-900 transition duration-300"
             >
               <FaLinkedin />
             </a>
@@ -34,7 +34,7 @@ function CardEquipe({ foto, nome, linkedin, github }: CardEquipeProps) {
               href={github}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xl text-gray-700 hover:text-gray-500 transition duration-300"
+              className="text-xl text-teal-700 hover:text-teal-900 transition duration-300"
             >
               <FaGithub />
             </a>

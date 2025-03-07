@@ -1,8 +1,11 @@
 import { AnimatePresence, motion } from "motion/react";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
 
 function NavBarMobile() {
   const [open, setOpen] = useState(false);
+  const { usuario } = useContext(AuthContext);
 
   function handleOpen() {
     setOpen(!open);
@@ -42,35 +45,66 @@ function NavBarMobile() {
         )}
       </motion.button>
       <AnimatePresence>
-
-      {open && (
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 30 }}
-          transition={{ duration: 0.5 }}
-          className="z-10 text-white bg-emerald-700 py-4 rounded-lg  flex flex-col absolute right-0 w-1/2"
-        >
-          <motion.ul
-            className="flex flex-col gap-10 p-2 text-2xl "
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 30 }}
             transition={{ duration: 0.5 }}
-            variants={listaAnimation}
+            className="z-50 text-white bg-emerald-700 py-4 rounded-lg  flex flex-col absolute right-0 w-2/5"
           >
-            <li className="cursor-pointer pl-4 font-bold">Viagens</li>
-            
-            <li className="cursor-pointer pl-4 font-bold">Veiculos</li>
-            <li className="cursor-pointer pl-4  font-bold ">Carrinho</li>
-            <li className="cursor-pointer pl-4 font-bold">Usuario</li>
-            <li className="cursor-pointer pl-4 font-bold">Sobre</li>
-
-            <li className="cursor-pointer pl-4 font-bold"> Sair</li>
-          </motion.ul>
-        </motion.div>
-      )}
+            <motion.ul
+              className="flex flex-col gap-10 p-2 text-2xl "
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              variants={listaAnimation}
+            >
+              <Link
+                className="cursor-pointer font-semibold px-2 hover:underline hover:scale-105 transition-all w-full"
+                to={"/viagens"}
+              >
+                Viagens
+              </Link>
+              <Link
+                className="cursor-pointer font-semibold px-2 hover:underline hover:scale-105 transition-all w-full"
+                to={"/veiculos"}
+              >
+                Veiculos
+              </Link>
+              <Link
+                className="cursor-pointer font-semibold px-2 hover:underline hover:scale-105 transition-all w-full"
+                to={"/sobre"}
+              >
+                Sobre
+              </Link>
+              {usuario.token ? (
+                <>
+                  <Link
+                    className="cursor-pointer font-semibold px-2 hover:underline hover:scale-105 transition-all w-full"
+                    to={"/perfil"}
+                  >
+                    Perfil
+                  </Link>
+                  <Link
+                    className="cursor-pointer font-semibold px-2 hover:underline hover:scale-105 transition-all w-full"
+                    to={"/carinho"}
+                  >
+                    Carrinho
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  className="cursor-pointer font-semibold px-2 hover:underline hover:scale-105 transition-all w-full"
+                  to={"/login"}
+                >
+                  Login
+                </Link>
+              )}
+            </motion.ul>
+          </motion.div>
+        )}
       </AnimatePresence>
-
     </>
   );
 }
