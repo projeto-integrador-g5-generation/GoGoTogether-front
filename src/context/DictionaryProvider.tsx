@@ -9,13 +9,13 @@ const DictionaryContext = createContext<{
   translate: (key: string) => string;
   setLanguage: (lang: number) => void;
   language: number;
-  theme: string
-  setTheme: (theme: string) => void
 } | null>(null);
 
 
 const dictionary: DictionaryType = {
     viagens: ["Viagens", "Trips", "Viajes"],
+    perfil: ['Perfil', 'Profile','Perfil'],
+    carrinho: ['Carrinho', 'Cart', 'Carro'],
     veiculos: ["Veiculos", "Vehicles", "Vehículos"],
     acessarRedes: ["Acesse nossas redes sociais", "Access our social networks", "Accede a nuestras redes sociales"],
     sair: ["Sair", "Logout", "Cerrar sesión"],
@@ -115,8 +115,6 @@ export const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
     return Number(localStorage.getItem("language")) || 0;
   });
 
-  const [theme, setTheme] = useState('claro')
-
   // Quando o idioma mudar, salvamos no navegador para lembrar depois
   useEffect(() => {
     localStorage.setItem("language", language.toString());
@@ -128,7 +126,7 @@ export const DictionaryProvider = ({ children }: DictionaryProviderProps) => {
   };
 
   return (
-    <DictionaryContext.Provider value={{ translate, setLanguage, language, theme, setTheme }}>
+    <DictionaryContext.Provider value={{ translate, setLanguage, language}}>
       {children}
     </DictionaryContext.Provider>
   );
