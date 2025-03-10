@@ -7,6 +7,7 @@ import { formatarMoeda } from '../../../util/FormatarMoeda'
 import { useContext } from 'react'
 import { CartContext } from '../../../context/CardContext'
 import { useDictionary } from '../../../context/DictionaryProvider'
+import { useTheme } from '../../../context/ThemeContext'
 
 
 
@@ -16,7 +17,8 @@ interface CardViagemProps {
 
 function CardViagens({ viagem }: CardViagemProps) {
 
-	const {translate, theme} = useDictionary();
+	const {translate} = useDictionary();
+	const {theme} = useTheme();
 	
 
 	const { adicionarProduto } = useContext(CartContext)

@@ -9,9 +9,11 @@ import { AuthContext } from "../../../context/AuthContext";
 import { ToastAlerta } from "../../../util/ToastAlerta";
 import { ClipLoader } from "react-spinners";
 import { useDictionary } from "../../../context/DictionaryProvider";
+import { useTheme } from "../../../context/ThemeContext";
 
 function ListarVeiculos() {
-  const { translate, theme } = useDictionary();
+  const { translate } = useDictionary();
+  const {theme} = useTheme();
 
   const navigate = useNavigate();
 

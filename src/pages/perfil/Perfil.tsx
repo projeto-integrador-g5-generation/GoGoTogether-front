@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { ToastAlerta } from "./../../util/ToastAlerta";
 import { AuthContext } from "../../context/AuthContext";
 import { useDictionary } from "../../context/DictionaryProvider";
+import {  useTheme } from "../../context/ThemeContext";
 
 function Perfil() {
   const navigate = useNavigate();
@@ -12,8 +13,8 @@ function Perfil() {
   const { usuario, handleLogout } = useContext(AuthContext);
 
 
-  const { setLanguage, translate, language, setTheme } = useDictionary();
-
+  const { setLanguage, translate, language} = useDictionary();
+  const {setTheme} = useTheme()
 
   useEffect(() => {
     if (usuario.token === "") {

@@ -9,10 +9,12 @@ import { ToastAlerta } from "../../../util/ToastAlerta";
 import CardViagens from "../cardviagens/CardViagens";
 import { useDictionary } from "../../../context/DictionaryProvider";
 import { ClipLoader } from "react-spinners";
+import { useTheme } from "../../../context/ThemeContext";
 
 function ListarViagens() {
   const navigate = useNavigate();
-  const { translate, theme } = useDictionary();
+  const { translate} = useDictionary();
+  const {theme} = useTheme();
 
   const [viagens, setViagens] = useState<Viagem[]>([]);
   const [isLoading, setIsloading] = useState(false);

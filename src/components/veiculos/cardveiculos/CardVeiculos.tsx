@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Veiculo from "../../../models/Veiculo";
 import { CarProfile, Pencil, Trash } from "@phosphor-icons/react";
 import { useDictionary } from "../../../context/DictionaryProvider";
+import { useTheme } from "../../../context/ThemeContext";
 
 interface CardVeiculoProps {
   veiculo: Veiculo;
@@ -9,7 +10,8 @@ interface CardVeiculoProps {
 
 function CardVeiculos({ veiculo }: CardVeiculoProps) {
 
-  const { translate, theme } = useDictionary();
+  const { translate } = useDictionary();
+  const {theme} = useTheme();
 
   return (
     <div className={`${theme === 'claro' ? 'bg-white' : "bg-gray-300"} flex flex-col rounded-lg overflow-hidden justify-between mx-4 my-10 shadow-lg hover:scale-101 transition-all`}>
