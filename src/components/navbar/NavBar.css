@@ -1,0 +1,35 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+.btn-navbar {
+    background-color: transparent;
+    transition: color 0.2s ease;
+    
+    &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff;
+        bottom: 0;
+        left: 0;
+        transform: scaleX(0);
+        transform-origin: bottom right;
+        transition: transform 0.3s ease;
+    }
+    
+    &:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+}
+
+.second-navbar {
+    height: 0;
+    transition: all 0.4s ease;
+}
+
+.height-navbar { height: 3.5rem; }
+
+.height-second-navbar { height: 23rem; }
+
+.icon-rotate { transform: rotate(180deg); }
