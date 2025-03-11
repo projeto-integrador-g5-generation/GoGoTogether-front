@@ -13,7 +13,7 @@ import { useTheme } from "../../../context/ThemeContext";
 
 function ListarVeiculos() {
   const { translate } = useDictionary();
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   const navigate = useNavigate();
 
@@ -47,7 +47,7 @@ function ListarVeiculos() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado!", "info");
+      ToastAlerta("Você precisa estar logado!", "info", theme);
       navigate("/login");
     }
   }, [token]);
@@ -74,9 +74,15 @@ function ListarVeiculos() {
         />
       ) : (
         <>
-          <div className={` ${theme === 'claro' ? 'bg-white-a' : "bg-gray-300"} flex justify-center p-4 w-full`}>
+          <div
+            className={` ${
+              theme === "light" ? "bg-white text-black" : "bg-gray-700 text-white"
+            } flex justify-center p-4 w-full`}
+          >
             <div className="w-full max-w-6xl flex flex-col sm:flex-row items-center gap-4">
-              <div className={`flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400 w-full sm:w-auto`}>
+              <div
+                className={`flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400 w-full sm:w-auto`}
+              >
                 <input
                   className="w-full px-4 py-2 h-9 focus:outline-none"
                   type="search"
@@ -108,7 +114,7 @@ function ListarVeiculos() {
           {listaVeiculo.length === 0 ? (
             <div className="flex justify-center items-center p-4 w-full min-h-[90vh]">
               <p className="text-3xl text-white font-semibold text-center">
-              {translate("veiculoNaoEncontrado")}
+                {translate("veiculoNaoEncontrado")}
               </p>
             </div>
           ) : (

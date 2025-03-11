@@ -3,6 +3,7 @@ import { createContext, ReactNode, useState } from "react";
 import Viagem from "../models/Viagens";
 import { ToastAlerta } from "../util/ToastAlerta";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "./ThemeContext";
 
 // Cria o tipo Items, como uma herança do tipo Produto
 export interface Items extends Viagem {
@@ -39,6 +40,8 @@ export function CartProvider({ children }: CartProviderProps) {
     0
   );
 
+  const { theme } = useTheme();
+
   // Função para adicionar produtos ao carrinho
   function adicionarProduto(produto: Viagem) {
     // Localiza o produto no array items e guarda o indice
@@ -49,14 +52,14 @@ export function CartProvider({ children }: CartProviderProps) {
       const novoCart = [...items];
       novoCart[itemIndex].quantidade += 1;
       setItems(novoCart);
-      ToastAlerta("01 item adicionado!", "info");
+      ToastAlerta("01 item adicionado!", "info", theme);
     } else {
       // Produto não está no carrinho, adiciona novo item
       setItems((itensAtuais) => [
         ...itensAtuais,
         { ...produto, quantidade: 1 },
       ]);
-      ToastAlerta("Produto adicionado ao carrinho!", "info");
+      ToastAlerta("Produto adicionado ao carrinho!", "info", theme);
     }
   }
 
@@ -68,9 +71,9 @@ export function CartProvider({ children }: CartProviderProps) {
       const novoCart = [...items];
       novoCart[itemIndex].quantidade += 1;
       setItems(novoCart);
-      ToastAlerta("01 item adicionado!", "info");
+      ToastAlerta("01 item adicionado!", "info", theme);
     } else {
-      ToastAlerta("Produto não encontrado no carrinho!", "info");
+      ToastAlerta("Produto não encontrado no carrinho!", "info", theme);
     }
   }
 
@@ -86,23 +89,22 @@ export function CartProvider({ children }: CartProviderProps) {
         // Reduz a quantidade do produto
         novoCart[itemIndex].quantidade -= 1;
         setItems(novoCart);
-        ToastAlerta("01 Item removido!", "info");
+        ToastAlerta("01 Item removido!", "info", theme);
       } else {
         // Remove o produto se a quantidade for 1
         novoCart.splice(itemIndex, 1);
         setItems(novoCart);
-        ToastAlerta("Produto removido!", "info");
+        ToastAlerta("Produto removido!", "info", theme);
       }
     }
   }
 
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   // Função para limpar o carrinho
   function limparCart() {
-    ToastAlerta("Compra efetuada com sucesso!", "sucesso");
-    navigate('/home')
+    ToastAlerta("Compra efetuada com sucesso!", "sucesso", theme);
+    navigate("/home");
     setItems([]);
   }
 

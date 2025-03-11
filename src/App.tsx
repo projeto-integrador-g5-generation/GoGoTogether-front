@@ -22,10 +22,10 @@ import ThemeProvider from "./context/ThemeContext";
 function App() {
   return (
     <>
-      <BrowserRouter>
-        <CartProvider>
-          <AuthProvider>
-            <ThemeProvider>
+      <ThemeProvider>
+        <BrowserRouter>
+          <CartProvider>
+            <AuthProvider>
               <ToastContainer />
               <DictionaryProvider>
                 <NavBar />
@@ -70,10 +70,10 @@ function App() {
                 </div>
                 <Footer />
               </DictionaryProvider>
-            </ThemeProvider>
-          </AuthProvider>
-        </CartProvider>
-      </BrowserRouter>
+            </AuthProvider>
+          </CartProvider>
+        </BrowserRouter>
+      </ThemeProvider>
     </>
   );
 }

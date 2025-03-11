@@ -8,11 +8,13 @@ import { atualizar, buscar, cadastrar } from "../../../service/Service";
 import { AuthContext } from "../../../context/AuthContext";
 import { ToastAlerta } from "../../../util/ToastAlerta";
 import { useDictionary } from "../../../context/DictionaryProvider";
+import { useTheme } from "../../../context/ThemeContext";
 
 function FormVeiculo() {
   const navigate = useNavigate();
 
   const { translate } = useDictionary();
+  const { theme } = useTheme();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo);
@@ -39,7 +41,7 @@ function FormVeiculo() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado", "info");
+      ToastAlerta("Você precisa estar logado", "info", theme);
       navigate("/login");
     }
   }, [token]);
@@ -71,13 +73,13 @@ function FormVeiculo() {
           },
         });
 
-        ToastAlerta("Veículo atualizado com sucesso", "sucesso");
+        ToastAlerta("Veículo atualizado com sucesso", "sucesso", theme);
       } catch (error: any) {
         console.log(error);
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao atualizar o Veículo!", "erro");
+          ToastAlerta("Erro ao atualizar o Veículo!", "erro", theme);
         }
       }
     } else {
@@ -89,13 +91,13 @@ function FormVeiculo() {
           },
         });
 
-        ToastAlerta("Veículo cadastrado com sucesso", "sucesso");
+        ToastAlerta("Veículo cadastrado com sucesso", "sucesso", theme);
       } catch (error: any) {
         console.log(error);
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao cadastrar o Veículo!", "erro");
+          ToastAlerta("Erro ao cadastrar o Veículo!", "erro", theme);
         }
       }
     }
@@ -115,7 +117,10 @@ function FormVeiculo() {
           {id === undefined ? "Cadastrar Veículo" : "Editar Veículo"}
         </h1>
 
-        <form className="flex flex-col w-full gap-4 mb-8" onSubmit={gerarNovoVeiculo}>
+        <form
+          className="flex flex-col w-full gap-4 mb-8"
+          onSubmit={gerarNovoVeiculo}
+        >
           <div className="flex flex-col gap-1 ">
             <label htmlFor="modelo">{translate("modelo")}</label>
             <input

@@ -9,16 +9,21 @@ interface CardVeiculoProps {
 }
 
 function CardVeiculos({ veiculo }: CardVeiculoProps) {
-
   const { translate } = useDictionary();
-  const {theme} = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <div className={`${theme === 'claro' ? 'bg-white' : "bg-gray-300"} flex flex-col rounded-lg overflow-hidden justify-between mx-4 my-10 shadow-lg hover:scale-101 transition-all`}>
+    <div
+      className={`${
+        theme === "light" ? "bg-white text-black" : "bg-black text-white"
+      } flex flex-col rounded-lg overflow-hidden justify-between mx-4 my-10 shadow-lg hover:scale-101 transition-all`}
+    >
       <div className="flex justify-between items-center p-2 bg-emerald-700">
         <div className="flex items-center">
           <CarProfile size={28} className="mr-1 fill-blue-200" />
-          <p className="text-xl text-left text-white font-bold p-2">{translate('veiculos')}</p>
+          <p className="text-xl text-left text-white font-bold p-2">
+            {translate("veiculos")}
+          </p>
         </div>
 
         <div className="flex justify-center gap-2 items-center">
@@ -48,8 +53,12 @@ function CardVeiculos({ veiculo }: CardVeiculoProps) {
               {veiculo.marca} - {veiculo.modelo}
             </p>
           </div>
-          <p className="text-sm text-center p-2">{translate('ano')}: {veiculo.ano}</p>
-          <p className="text-sm text-center p-2">{translate('placa')}: {veiculo.placa}</p>
+          <p className="text-sm text-center p-2">
+            {translate("ano")}: {veiculo.ano}
+          </p>
+          <p className="text-sm text-center p-2">
+            {translate("placa")}: {veiculo.placa}
+          </p>
         </div>
       </div>
     </div>

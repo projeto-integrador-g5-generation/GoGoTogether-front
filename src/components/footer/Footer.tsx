@@ -16,7 +16,7 @@ const Footer = () => {
   return (
     <footer
       className={`flex flex-col w-full ${
-        theme === "claro"
+        theme === "light"
           ? "bg-gradient-to-r from-emerald-800 to-emerald-900"
           : "bg-black"
       } text-white p-4 justify-center items-center`}

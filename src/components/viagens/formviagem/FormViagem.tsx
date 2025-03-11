@@ -10,12 +10,14 @@ import { atualizar, buscar, cadastrar } from "../../../service/Service";
 import { formatarDataSubmit } from "../../../util/FormatarData";
 import { ToastAlerta } from "../../../util/ToastAlerta";
 import { useDictionary } from "../../../context/DictionaryProvider";
+import { useTheme } from "../../../context/ThemeContext";
 
 function FormViagem() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [veiculos, setVeiculos] = useState<Veiculo[]>([]);
   const { translate } = useDictionary();
+  const { theme } = useTheme();
 
   const [veiculo, setVeiculo] = useState<Veiculo>({
     id: 0,
@@ -51,7 +53,7 @@ function FormViagem() {
       if (error.toString().includes("401")) {
         handleLogout();
       } else {
-        ToastAlerta("Viagem não encontrada!", "erro");
+        ToastAlerta("Viagem não encontrada!", "erro", theme);
         retornar();
       }
     }
@@ -68,7 +70,7 @@ function FormViagem() {
       if (error.toString().includes("401")) {
         handleLogout();
       } else {
-        ToastAlerta("Veículo não Encontrado!", "erro");
+        ToastAlerta("Veículo não Encontrado!", "erro", theme);
         retornar();
       }
     }
@@ -90,7 +92,7 @@ function FormViagem() {
 
   useEffect(() => {
     if (!token) {
-      ToastAlerta("Você precisa estar logado!", "info");
+      ToastAlerta("Você precisa estar logado!", "info", theme);
       navigate("/login");
     }
   }, [token]);
@@ -183,12 +185,12 @@ function FormViagem() {
             Authorization: token,
           },
         });
-        ToastAlerta("Carona atualizada com sucesso", "sucesso");
+        ToastAlerta("Carona atualizada com sucesso", "sucesso", theme);
       } catch (error: any) {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao atualizar a Carona!", "erro");
+          ToastAlerta("Erro ao atualizar a Carona!", "erro", theme);
         }
       }
     } else {
@@ -198,13 +200,13 @@ function FormViagem() {
             Authorization: token,
           },
         });
-        ToastAlerta("Carona cadastrada com sucesso", "sucesso");
+        ToastAlerta("Carona cadastrada com sucesso", "sucesso", theme);
       } catch (error: any) {
         console.log(error);
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao cadastrar a Carona!", "erro");
+          ToastAlerta("Erro ao cadastrar a Carona!", "erro", theme);
         }
       }
     }

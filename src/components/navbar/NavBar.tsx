@@ -62,8 +62,14 @@ const NavBar = () => {
   return (
     <>
       {/* Navbar - Mobile */}
-      <div className={` ${theme === 'claro' ? 'bg-gradient-to-r from-emerald-800 to-emerald-900': 'bg-black'}
-        fixed md:hidden w-full z-20 top-0 second-navbar  text-white`}>
+      <div
+        className={` ${
+          theme === "light"
+            ? "bg-gradient-to-r from-emerald-800 to-emerald-900"
+            : "bg-black"
+        }
+        fixed md:hidden w-full z-20 top-0 second-navbar  text-white`}
+      >
         <div className="w-full relative h-full shadow-md transition-all">
           <nav className="flex flex-col w-full items-center justify-center absolute bottom-0 p-1 gap-2 transition-all">
             <Link
@@ -114,7 +120,13 @@ const NavBar = () => {
 
       {/* Navbar - Pc */}
       <div className="w-full fixed cont-navbar h-0 overflow-hidden transition-all top-0 z-20 height-navbar shadow-md">
-        <div className={`${theme === 'claro' ? 'bg-gradient-to-r from-emerald-800 to-emerald-900': 'bg-black'} w-full h-full relative text-white flex justify-center items-center`}>
+        <div
+          className={`${
+            theme === "light"
+              ? "bg-gradient-to-r from-emerald-800 to-emerald-900"
+              : "bg-black"
+          } w-full h-full relative text-white flex justify-center items-center`}
+        >
           <nav className="flex w-full items-center justify-center absolute bottom-0 p-2 max-w-7xl">
             <button className="absolute left-1 btn-list-navbar bg-transparent md:hidden text-3xl cursor-pointer bi bi-list transition-all"></button>
             <div className="w-full flex justify-center md:justify-start items-center">

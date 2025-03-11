@@ -13,8 +13,8 @@ import { useTheme } from "../../../context/ThemeContext";
 
 function ListarViagens() {
   const navigate = useNavigate();
-  const { translate} = useDictionary();
-  const {theme} = useTheme();
+  const { translate } = useDictionary();
+  const { theme } = useTheme();
 
   const [viagens, setViagens] = useState<Viagem[]>([]);
   const [isLoading, setIsloading] = useState(false);
@@ -42,7 +42,7 @@ function ListarViagens() {
 
   useEffect(() => {
     if (!token) {
-      ToastAlerta("Você precisa estar logado!", "info");
+      ToastAlerta("Você precisa estar logado!", "info", theme);
       navigate("/login");
     } else {
       buscarViagems();
@@ -70,9 +70,15 @@ function ListarViagens() {
         />
       ) : (
         <>
-          <div className={` ${theme === 'claro' ? 'bg-white-a' : "bg-gray-300"} flex justify-center p-4 w-full`}>
+          <div
+            className={` ${
+              theme === "light" ? "bg-white text-black" : "bg-gray-700 text-white"
+            } flex justify-center p-4 w-full`}
+          >
             <div className="w-full max-w-6xl flex flex-col sm:flex-row items-center gap-4 ">
-              <div className={`flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400 w-full sm:w-auto`}>
+              <div
+                className={`flex-1 flex items-center bg-white rounded-lg shadow-lg border border-gray-400 w-full sm:w-auto`}
+              >
                 <input
                   className="w-full px-4 py-2 h-9 focus:outline-none"
                   type="search"

@@ -9,11 +9,13 @@ import { buscar, deletar } from "../../../service/Service";
 import { ToastAlerta } from "../../../util/ToastAlerta";
 import { CarProfile } from "@phosphor-icons/react";
 import { useDictionary } from "../../../context/DictionaryProvider";
+import { useTheme } from "../../../context/ThemeContext";
 
 function DeletarVeiculo() {
   const navigate = useNavigate();
 
   const { translate } = useDictionary();
+  const { theme } = useTheme();
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [veiculo, setVeiculo] = useState<Veiculo>({} as Veiculo);
@@ -35,7 +37,7 @@ function DeletarVeiculo() {
       if (error.toString().includes("401")) {
         handleLogout();
       } else {
-        ToastAlerta("Erro ao localizar o Veículo!", "erro");
+        ToastAlerta("Erro ao localizar o Veículo!", "erro", theme);
         retornar();
       }
     }
@@ -43,7 +45,7 @@ function DeletarVeiculo() {
 
   useEffect(() => {
     if (token === "") {
-      ToastAlerta("Você precisa estar logado!", "info");
+      ToastAlerta("Você precisa estar logado!", "info", theme);
       navigate("/login");
     }
   }, [token]);
@@ -64,12 +66,12 @@ function DeletarVeiculo() {
         },
       });
 
-      ToastAlerta("Veículo Excluído com Sucesso!", "sucesso");
+      ToastAlerta("Veículo Excluído com Sucesso!", "sucesso", theme);
     } catch (error: any) {
       if (error.toString().includes("401")) {
         handleLogout();
       } else {
-        ToastAlerta("Erro ao Excluir o Veículo!", "erro");
+        ToastAlerta("Erro ao Excluir o Veículo!", "erro", theme);
       }
     }
 

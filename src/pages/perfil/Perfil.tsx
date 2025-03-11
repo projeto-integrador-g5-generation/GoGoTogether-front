@@ -5,20 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { ToastAlerta } from "./../../util/ToastAlerta";
 import { AuthContext } from "../../context/AuthContext";
 import { useDictionary } from "../../context/DictionaryProvider";
-import {  useTheme } from "../../context/ThemeContext";
+import { useTheme } from "../../context/ThemeContext";
 
 function Perfil() {
   const navigate = useNavigate();
 
   const { usuario, handleLogout } = useContext(AuthContext);
 
-
-  const { setLanguage, translate, language} = useDictionary();
-  const {setTheme} = useTheme()
+  const { setLanguage, translate, language } = useDictionary();
+  const { setTheme, theme } = useTheme();
 
   useEffect(() => {
     if (usuario.token === "") {
-      ToastAlerta("Você precisa estar logado.", "info");
+      ToastAlerta("Você precisa estar logado.", "info", theme);
       navigate("/login");
     }
   }, [usuario.token]);
@@ -35,7 +34,10 @@ function Perfil() {
 
           <img
             className="relative z-10 border-8 border-white mx-auto mt-[-9rem] rounded-full w-56 h-56"
-            src={usuario.foto || "https://ik.imagekit.io/ajt99blle/9815472-Photoroom.png?updatedAt=1740150724984"}
+            src={
+              usuario.foto ||
+              "https://ik.imagekit.io/ajt99blle/9815472-Photoroom.png?updatedAt=1740150724984"
+            }
             alt={`Foto de perfil de ${usuario.nome}`}
           />
 
@@ -51,18 +53,23 @@ function Perfil() {
 
             <div className="w-full flex flex-col gap-4 justify-center items-center">
               <div className="flex gap-4 mt-[-1rem]">
-                <button className="text-white hover:scale-125 cursor-pointer"
-                onClick={() => {
-                  ToastAlerta("Tema claro ativado!", "sucesso")
-                  setTheme('claro')
-                  }}>
+                <button
+                  className="text-white hover:scale-125 cursor-pointer"
+                  onClick={() => {
+                    ToastAlerta("Tema light ativado!", "sucesso", theme);
+                    setTheme("light");
+                  }}
+                >
                   <SunDim size={40} />
                 </button>
 
-                <button className="text-white hover:scale-125 cursor-pointer"
-                onClick={() => {
-                  ToastAlerta("Tema escuro ativado!", "sucesso")
-                  setTheme('escuro')}}>
+                <button
+                  className="text-white hover:scale-125 cursor-pointer"
+                  onClick={() => {
+                    ToastAlerta("Tema dark ativado!", "sucesso", theme);
+                    setTheme("dark");
+                  }}
+                >
                   <Moon size={39} />
                 </button>
               </div>
@@ -82,8 +89,8 @@ function Perfil() {
 
               <a
                 onClick={() => {
-                  ToastAlerta('Ação concluida!', 'sucesso')
-                  handleLogout()
+                  ToastAlerta("Ação concluida!", "sucesso", theme);
+                  handleLogout();
                 }}
                 className="text-white text-lg hover:text-red-500 transition-colors duration-300 mt-4 cursor-pointer"
               >

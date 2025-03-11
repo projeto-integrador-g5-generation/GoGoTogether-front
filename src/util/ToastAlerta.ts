@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export function ToastAlerta(mensagem: string, tipo: string) {
+export function ToastAlerta(mensagem: string, tipo: string, theme: string) {
   switch (tipo) {
     case "sucesso":
       toast.success(mensagem, {
@@ -10,7 +10,7 @@ export function ToastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: "colored",
+        theme: theme,
         progress: undefined,
       });
       break;
@@ -23,7 +23,7 @@ export function ToastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: "colored",
+        theme: theme,
         progress: undefined,
       });
       break;
@@ -37,7 +37,7 @@ export function ToastAlerta(mensagem: string, tipo: string) {
         closeOnClick: true,
         pauseOnHover: false,
         draggable: false,
-        theme: "colored",
+        theme: theme,
         progress: undefined,
       });
       break;

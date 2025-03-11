@@ -3,6 +3,7 @@ import { createContext, ReactNode, useState } from "react";
 import { ToastAlerta } from "../util/ToastAlerta";
 import { login } from "../service/Service";
 import UsuarioLogin from "../models/UsuarioLogin";
+import { useTheme } from "./ThemeContext";
 
 interface AuthContextProps {
   usuario: UsuarioLogin;
@@ -28,16 +29,16 @@ export function AuthProvider({ children }: AuthProviderProps) {
   });
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
+  const { theme } = useTheme();
 
   async function handleLogin(usuariologin: UsuarioLogin) {
     setIsLoading(true);
 
     try {
       await login("/usuarios/logar", usuariologin, setUsuario);
-      ToastAlerta("Usuário foi autenticado com sucesso!", "sucesso");
+      ToastAlerta("Usuário foi autenticado com sucesso!", "sucesso", theme);
     } catch (error) {
-      ToastAlerta("Os dados do Usuário estão inconsistentes!", "erro");
+      ToastAlerta("Os dados do Usuário estão inconsistentes!", "erro", theme);
     }
 
     setIsLoading(false);

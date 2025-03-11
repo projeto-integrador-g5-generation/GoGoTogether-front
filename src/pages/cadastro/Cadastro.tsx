@@ -8,6 +8,7 @@ import { RotatingLines } from "react-loader-spinner";
 import "./Cadastro.css";
 import { Link, useNavigate } from "react-router-dom";
 import { ToastAlerta } from "../../util/ToastAlerta";
+import { useTheme } from "../../context/ThemeContext";
 
 function Cadastro() {
   const [usuario, setUsuario] = useState<Usuario>({
@@ -20,7 +21,8 @@ function Cadastro() {
     senha: "",
     foto: "",
   });
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const { theme } = useTheme();
 
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,8 +32,8 @@ function Cadastro() {
   ) => {
     setUsuario({
       ...usuario,
-      [e.target.name]: e.target.value
-    })
+      [e.target.name]: e.target.value,
+    });
   };
 
   const cadastrar = async (e: FormEvent) => {
@@ -40,8 +42,8 @@ function Cadastro() {
 
     try {
       await cadastrarUsuario("/usuarios/cadastrar", usuario, setUsuario);
-      ToastAlerta("Usuário cadastrado com sucesso!", "sucesso")
-      navigate('/login')
+      ToastAlerta("Usuário cadastrado com sucesso!", "sucesso", theme);
+      navigate("/login");
       setUsuario({
         id: 0,
         cpf: "",
@@ -58,11 +60,14 @@ function Cadastro() {
       });
     } catch (error: any) {
       console.log(error);
-      ToastAlerta("Erro ao cadastrar. Tente novamente! " + error.response.data.message, "erro");
+      ToastAlerta(
+        "Erro ao cadastrar. Tente novamente! " + error.response.data.message,
+        "erro",
+        theme
+      );
     }
-    
+
     setIsLoading(false);
-    
   };
 
   return (

@@ -12,7 +12,7 @@ interface ThemeProviderProps {
 }
 
 export const ThemeProvider = ({ children }: ThemeProviderProps) => {
-  const [theme, setTheme] = useState("claro");
+  const [theme, setTheme] = useState("light");
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
