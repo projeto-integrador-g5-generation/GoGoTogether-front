@@ -99,7 +99,7 @@ function FormViagem() {
 
   useEffect(() => {
     buscarVeiculos();
-    if (id !== undefined) {
+    if (id) {
       buscarViagemPorId(id);
     }
   }, [id]);
@@ -215,7 +215,18 @@ function FormViagem() {
     retornar();
   }
 
-  const veiculoSelecionado = viagem.veiculo?.id > 0;
+  const viagemData = new Date(viagem.data_hora_partida);
+  const formattedDate = `${viagemData.getFullYear()}-${(
+    viagemData.getMonth() + 1
+  )
+    .toString()
+    .padStart(2, "0")}-${viagemData
+    .getDate()
+    .toString()
+    .padStart(2, "0")}T${viagemData
+    .getHours()
+    .toString()
+    .padStart(2, "0")}:${viagemData.getMinutes().toString().padStart(2, "0")}`;
 
   return (
     <div className="flex justify-center items-center w-full min-h-screen p-4">
@@ -265,10 +276,9 @@ function FormViagem() {
             <input
               type="datetime-local"
               name="data_hora_partida"
-              placeholder="Data e Horário da carona"
               className="border-2 border-slate-700 rounded p-1 w-full focus:outline-none focus:ring-2 focus:ring-zinc-400"
               onChange={handleDataChange}
-              value={viagem.data_hora_partida}
+              value={formattedDate}
               required
             />
           </div>
@@ -362,23 +372,30 @@ function FormViagem() {
             </select>
           </div>
 
-          <button
-            type="submit"
-            disabled={!veiculoSelecionado || isLoading}
-            className="flex justify-center rounded disabled:bg-slate-200 bg-emerald-800 hover:bg-emerald-900 text-white font-bold w-1/2 mx-auto py-1 cursor-pointer transition-all"
-          >
-            {isLoading ? (
-              <RotatingLines
-                strokeColor="white"
-                strokeWidth="5"
-                animationDuration="0.75"
-                width="24"
-                visible={true}
-              />
-            ) : (
-              <span>{id !== undefined ? "Atualizar" : "Cadastrar"}</span>
-            )}
-          </button>
+          <div className="w-full flex gap-4">
+            <button
+              onClick={retornar}
+              className="rounded text-slate-100 bg-red-400 hover:bg-red-900 text-center cursor-pointer transition-all shadow-md p-2 w-full"
+            >
+              Cancelar
+            </button>
+            <button
+              className="rounded text-slate-100 bg-emerald-600 hover:bg-emerald-900 text-center cursor-pointer transition-all shadow-md p-2 w-full"
+              type="submit"
+            >
+              {isLoading ? (
+                <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                />
+              ) : (
+                <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </div>
