@@ -18,8 +18,11 @@ import { CartProvider } from "./context/CardContext";
 import Cart from "./components/carrinho/Cart";
 import DictionaryProvider from "./context/DictionaryProvider";
 import ThemeProvider from "./context/ThemeContext";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 function App() {
+  useSmoothScroll();
+  
   return (
     <>
       <ThemeProvider>

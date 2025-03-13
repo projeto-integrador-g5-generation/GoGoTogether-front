@@ -102,7 +102,21 @@ const dictionary: DictionaryType = {
     equipe: ["Equipe", "Team", "Equipo"],
     sobre: ["Sobre", "About", "Acerca de"],
     conhecaEquipe: ["Conheça Nossa Equipe","Meet Our Team","Conozca a nuestro equipo"],
-  }
+    facaLogin: ["Faça login para ver sua atividade recente", "Log in to see your recent activity", "Inicia sesión para ver tu actividad reciente"],
+    vejaMais: ["Veja viagens anteriores, sugestões personalizadas, recursos de suporte e muito mais.", "See past trips, personalized suggestions, support resources, and more.", "Ve viajes anteriores, sugerencias personalizadas, recursos de soporte y mucho más."],
+    facaLoginConta: ["Faça login na sua conta", "Log in to your account", "Inicia sesión en tu cuenta"],
+    semConta: ["Não tem uma conta? Cadastre-se", "Don't have an account? Sign up", "¿No tienes una cuenta? Regístrate"],
+    oferecaCaronas: ["Ofereça caronas quando quiser e ganhe de acordo com suas viagens.", "Offer rides whenever you want and earn based on your trips.", "Ofrece viajes cuando quieras y gana según tus viajes."],
+    ganheDinheiroCaronas: ["Ganhe dinheiro oferecendo caronas no horário que você definir. Use seu próprio carro e conecte-se com passageiros de forma fácil e segura.", "Earn money by offering rides at the times you choose. Use your own car and connect with passengers easily and safely.", "Gana dinero ofreciendo viajes en el horario que elijas. Usa tu propio coche y conéctate con pasajeros de manera fácil y segura."],
+    comecar: ["Começar", "Start", "Empezar"],
+    jaTemConta: ["Já tem uma conta? Fazer login", "Already have an account? Log in", "¿Ya tienes una cuenta? Iniciar sesión"],
+    oferecaCaronasNecessidades: ["Ofereça caronas quando quiser e ganhe conforme suas necessidades.", "Offer rides whenever you want and earn according to your needs.", "Ofrece viajes cuando quieras y gana según tus necesidades."],
+    ganheDinheiroPreferir: ["Ganhe dinheiro oferecendo caronas no horário que preferir. Use seu próprio carro e conecte-se com passageiros de forma prática e segura.", "Earn money by offering rides at the time you prefer. Use your own car and connect with passengers easily and safely.", "Gana dinero ofreciendo viajes en el horario que prefieras. Usa tu propio coche y conéctate con pasajeros de manera práctica y segura."],
+    maisFacilApp: ["É mais fácil pelo app", "It's easier through the app", "Es más fácil a través de la app"],
+    baixeApp: ["Baixe o app", "Download the app", "Descarga la app"],
+    leiaQR: ["Leia o código QR para baixar o app", "Scan the QR code to download the app", "Lee el código QR para descargar la app"],
+    baixeAppParceiro: ["Baixe o app de parceiro", "Download the partner app", "Descarga la app de socio"]
+}
 
 
 interface DictionaryProviderProps {

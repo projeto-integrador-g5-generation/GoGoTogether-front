@@ -15,11 +15,12 @@ const Footer = () => {
 
   return (
     <footer
-      className={`flex flex-col w-full ${
+      className={`flex flex-col w-full footer ${
         theme === "light"
           ? "bg-gradient-to-r from-emerald-800 to-emerald-900"
           : "bg-black"
       } text-white p-4 justify-center items-center`}
+        data-animate="top"
     >
       <div className="flex flex-col gap-4 sm:flex-row w-full justify-between max-w-7xl p-4">
         <div className="flex flex-col sm:flex-row w-full justify-around">

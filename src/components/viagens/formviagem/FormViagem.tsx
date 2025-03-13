@@ -190,7 +190,7 @@ function FormViagem() {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao atualizar a Carona!", "erro", theme);
+          ToastAlerta("Erro ao atualizar a Carona!", "erro " + error.response.data.message, theme);
         }
       }
     } else {
@@ -206,7 +206,7 @@ function FormViagem() {
         if (error.toString().includes("401")) {
           handleLogout();
         } else {
-          ToastAlerta("Erro ao cadastrar a Carona!", "erro", theme);
+          ToastAlerta("Erro ao cadastrar a Carona!", "erro" + error.response.data.message, theme);
         }
       }
     }

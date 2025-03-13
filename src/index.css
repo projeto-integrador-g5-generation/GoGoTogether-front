@@ -19,9 +19,71 @@
 }
 
 .bg-white-a {
-  background-color: rgba(255, 255, 255, 0.875);
+  background-color: #eeffeed2;
 }
 
 .bg-app-black {
-  background-color: rgba(0, 0, 0, 0.37);
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Animações */
+
+@keyframes animatetop {
+  from {
+      transform: translateY(-45px);
+      opacity: 0.8
+  }
+
+  to {
+      transform: translateY(0px);
+      opacity: 1.5
+  }
+}
+
+.animate-right {
+  animation: animateright 1.5s ease;
+}
+
+@keyframes animateright {
+  from {
+      transform: translateX(45px);
+      opacity: 0.8
+  }
+
+  to {
+      transform: translateX(0px);
+      opacity: 1.5
+  }
+}
+
+.animate-bottom {
+  animation: animatebottom 1.5s ease;
+}
+
+@keyframes animatebottom {
+  from {
+      transform: translateY(45px);
+      opacity: 0.8
+  }
+
+  to {
+      transform: translateY(0px);
+      opacity: 1.5
+  }
+}
+
+.animate-left {
+  animation: animateleft 1.5s ease;
+}
+
+@keyframes animateleft {
+  from {
+      transform: translateX(-45px);
+      opacity: 0.8
+  }
+
+  to {
+      transform: translateX(0px);
+      opacity: 1
+  }
 }

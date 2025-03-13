@@ -8,7 +8,7 @@
 
 /*Tamanho e o posicionamento do Carrossel*/
 .swiper {
-  height: 70vh;
+  height: 60vh;
   margin: 0;
 }
 
@@ -21,5 +21,5 @@
 }
 
 .bg-slide {
-  background-color: rgba(0, 0, 0, 0.493);
+  background-color: rgba(0, 0, 0, 0.5);
 }
