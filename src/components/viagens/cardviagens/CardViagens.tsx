@@ -115,7 +115,10 @@ function CardViagens({ viagem }: CardViagemProps) {
 
             <div className="flex items-center text-black">
               <img
-                src={viagem.veiculo?.foto}
+                src={
+                  viagem.veiculo?.foto ||
+                  "https://ik.imagekit.io/z8ilvvp84p/depositphotos_8681192-stock-illustration-cartoon-car.jpg?updatedAt=1741824982574"
+                }
                 alt={viagem.veiculo?.modelo}
                 className="border-transparent rounded-lg w-20 h-16 object-fit"
               />
