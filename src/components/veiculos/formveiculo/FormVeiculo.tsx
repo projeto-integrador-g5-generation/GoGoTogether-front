@@ -155,7 +155,7 @@ function FormVeiculo() {
             <div className="flex flex-col gap-1 w-1/2 pr-1 ">
               <label htmlFor="ano">{translate("ano")}</label>
               <input
-                type="text"
+                type="number"
                 placeholder={translate("fraseAno")}
                 name="ano"
                 className="border-2 border-slate-700 rounded p-2 utral-800"
@@ -288,23 +288,30 @@ function FormVeiculo() {
             </div>
           </div>
 
-          <button
-            className="rounded text-slate-100 bg-emerald-600 
-          hover:bg-emerald-900 w-1/2 py-2 mx-auto flex justify-center cursor-pointer transition-all shadow-md"
-            type="submit"
-          >
-            {isLoading ? (
-              <RotatingLines
-                strokeColor="white"
-                strokeWidth="5"
-                animationDuration="0.75"
-                width="24"
-                visible={true}
-              />
-            ) : (
-              <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
-            )}
-          </button>
+          <div className="w-full flex gap-4">
+            <button
+              onClick={retornar}
+              className="rounded text-slate-100 bg-red-400 hover:bg-red-900 text-center cursor-pointer transition-all shadow-md p-2 w-full"
+            >
+              Cancelar
+            </button>
+            <button
+              className="rounded text-slate-100 bg-emerald-600 hover:bg-emerald-900 text-center cursor-pointer transition-all shadow-md p-2 w-full"
+              type="submit"
+            >
+              {isLoading ? (
+                <RotatingLines
+                  strokeColor="white"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  width="24"
+                  visible={true}
+                />
+              ) : (
+                <span>{id === undefined ? "Cadastrar" : "Atualizar"}</span>
+              )}
+            </button>
+          </div>
         </form>
       </div>
     </div>
