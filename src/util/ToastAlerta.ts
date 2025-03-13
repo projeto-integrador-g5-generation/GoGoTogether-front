@@ -5,10 +5,10 @@ export function ToastAlerta(mensagem: string, tipo: string, theme: string) {
     case "sucesso":
       toast.success(mensagem, {
         position: "top-left",
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: false,
+        pauseOnHover: true,
         draggable: false,
         theme: theme,
         progress: undefined,
@@ -18,10 +18,10 @@ export function ToastAlerta(mensagem: string, tipo: string, theme: string) {
     case "erro":
       toast.error(mensagem, {
         position: "top-left",
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: false,
+        pauseOnHover: true,
         draggable: false,
         theme: theme,
         progress: undefined,
@@ -32,10 +32,10 @@ export function ToastAlerta(mensagem: string, tipo: string, theme: string) {
     default:
       toast.info(mensagem, {
         position: "top-left",
-        autoClose: 2000,
+        autoClose: 3000,
         hideProgressBar: false,
         closeOnClick: true,
-        pauseOnHover: false,
+        pauseOnHover: true,
         draggable: false,
         theme: theme,
         progress: undefined,
