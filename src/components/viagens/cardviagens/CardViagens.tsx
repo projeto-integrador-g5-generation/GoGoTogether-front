@@ -93,7 +93,9 @@ function CardViagens({ viagem }: CardViagemProps) {
             {formatarMoeda(viagem.preco)}
           </h3>
 
-          <div className="flex flex-col bg-emerald-100 mt-3 p-2 rounded-lg text-black">
+          <div className={` ${
+        theme === "light" ? "bg-sky-100 text-black" : "bg-gray-700 text-white"
+      }flex flex-col  mt-3 p-2 rounded-lg`}>
             <h4 className="text-sm font-semibold py-1">
               {translate("detalhesCarona")}:
             </h4>
@@ -108,7 +110,9 @@ function CardViagens({ viagem }: CardViagemProps) {
             </p>
           </div>
 
-          <div className="flex flex-col items-start bg-emerald-100 mt-3 p-2 rounded-lg">
+          <div className={` ${
+        theme === "light" ? "bg-green-200 text-black" : "bg-gray-600 text-white"
+      } flex flex-col items-start  mt-3 p-2 rounded-lg`}>
             <h4 className="text-sm font-semibold py-1">
               {translate("veiculo")}:
             </h4>

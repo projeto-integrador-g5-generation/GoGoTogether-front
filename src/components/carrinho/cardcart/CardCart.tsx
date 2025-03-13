@@ -4,6 +4,7 @@ import { CartContext, Items } from "../../../context/CardContext";
 import { formatarData, formatarHora } from "../../../util/FormatarData";
 import { Clock, MapPin } from "phosphor-react";
 import { useDictionary } from "../../../context/DictionaryProvider";
+import { useTheme } from "../../../context/ThemeContext";
 
 interface CardProdutosProps {
   item: Items;
@@ -13,10 +14,14 @@ function CardCart({ item }: CardProdutosProps) {
   const { adicionarItem, removerItem } = useContext(CartContext);
 
   const {translate} = useDictionary();
+
+  const { theme } = useTheme();
   
 
   return (
-    <div className="flex flex-col rounded-lg overflow-hidden justify-between bg-white shadow-lg hover:scale-101 transition-all">
+    <div className={` ${
+        theme === "light" ? "bg-white text-black" : "bg-black text-white"
+      } flex flex-col rounded-lg overflow-hidden justify-between  shadow-lg hover:scale-101 transition-all`}>
       <div className="p-2">
         <div className="min-h-12 flex items-center justify-start">
           <MapPin size={24} className="fill-red-700" />
@@ -42,7 +47,9 @@ function CardCart({ item }: CardProdutosProps) {
           </div>
         </div>
 
-        <div className="flex flex-col bg-sky-100 mt-3 p-2 rounded-lg">
+        <div className={` ${
+        theme === "light" ? "bg-sky-100 text-black" : "bg-gray-700 text-white"
+      }flex flex-col  mt-3 p-2 rounded-lg`}>
           <h4 className="text-sm font-semibold py-1">{translate('detalhesCarona')}:</h4>
           <p className="text-sm text-left py-1">
           {translate('distancia')}: {item.distancia} Km
@@ -55,7 +62,9 @@ function CardCart({ item }: CardProdutosProps) {
           </p>
         </div>
 
-        <div className="flex flex-col items-start bg-green-200 mt-3 p-2 rounded-lg">
+        <div className={` ${
+        theme === "light" ? "bg-green-200 text-black" : "bg-gray-600 text-white"
+      } flex flex-col items-start  mt-3 p-2 rounded-lg`}>
           <h4 className="text-sm font-semibold py-1">{translate('veiculo')}:</h4>
 
           <div className="flex items-center">
@@ -86,7 +95,7 @@ function CardCart({ item }: CardProdutosProps) {
       </div>
       <div className="flex flex-wrap">
         <button
-          className="w-1/2 text-slate-100 bg-blue-400 hover:bg-blue-600 flex items-center p-1 justify-center cursor-pointer transition-all"
+          className="w-1/2 text-slate-100 bg-emerald-500 hover:bg-emerald-700 flex items-center p-1 justify-center cursor-pointer transition-all"
           onClick={() => adicionarItem(item.id)}
         >
           <Plus size={32} />
