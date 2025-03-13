@@ -1,4 +1,5 @@
 import { FaLinkedin, FaGithub } from "react-icons/fa";
+import { useTheme } from "../../../context/ThemeContext";
 
 interface CardEquipeProps {
   foto: string;
@@ -8,6 +9,9 @@ interface CardEquipeProps {
 }
 
 function CardEquipe({ foto, nome, linkedin, github }: CardEquipeProps) {
+
+  const { theme } = useTheme();
+
   return (
     <div className="border border-gray-300 rounded-lg p-4 w-64 mx-auto my-4 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
       <div className="flex flex-col items-center">
