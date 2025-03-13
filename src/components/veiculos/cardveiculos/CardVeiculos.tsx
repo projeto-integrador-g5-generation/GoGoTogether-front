@@ -42,7 +42,10 @@ function CardVeiculos({ veiculo }: CardVeiculoProps) {
 
       <div className="flex flex-col justify-center py-2">
         <img
-          src={veiculo.foto}
+          src={
+            veiculo.foto ||
+            "https://ik.imagekit.io/z8ilvvp84p/depositphotos_8681192-stock-illustration-cartoon-car.jpg?updatedAt=1741824982574"
+          }
           className="mt-1 h-36 w-auto m-2 object-contain rounded-lg "
           alt={veiculo.modelo}
         />
