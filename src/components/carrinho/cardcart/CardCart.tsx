@@ -95,13 +95,13 @@ function CardCart({ item }: CardProdutosProps) {
       </div>
       <div className="flex flex-wrap">
         <button
-          className="w-1/2 text-slate-100 bg-emerald-500 hover:bg-emerald-700 flex items-center p-1 justify-center cursor-pointer transition-all"
+          className="w-1/2 text-slate-100 bg-emerald-400 hover:bg-emerald-500 flex items-center p-1 justify-center cursor-pointer transition-all"
           onClick={() => adicionarItem(item.id)}
         >
           <Plus size={32} />
         </button>
         <button
-          className="w-1/2 text-slate-100 bg-red-400 hover:bg-red-600 flex items-center p-1 justify-center cursor-pointer transition-all"
+          className="w-1/2 text-slate-100 bg-red-400 hover:bg-red-500 flex items-center p-1 justify-center cursor-pointer transition-all"
           onClick={() => removerItem(item.id)}
         >
           <Minus size={32} />
