@@ -86,7 +86,7 @@ function Login() {
 
           <button
             type="submit"
-            className="form-button submit w-full cursor-pointer"
+            className="form-button submit w-full cursor-pointer text-center flex justify-center items-center"
           >
             {isLoading ? (
               <RotatingLines

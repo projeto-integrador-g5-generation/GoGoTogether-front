@@ -296,7 +296,7 @@ function FormVeiculo() {
               Cancelar
             </button>
             <button
-              className="rounded text-slate-100 bg-emerald-600 hover:bg-emerald-900 text-center cursor-pointer transition-all shadow-md p-2 w-full"
+              className="rounded text-slate-100 bg-emerald-600 hover:bg-emerald-900 text-center cursor-pointer transition-all shadow-md p-2 w-full flex justify-center items-center"
               type="submit"
             >
               {isLoading ? (
