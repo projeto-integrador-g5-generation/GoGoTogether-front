@@ -19,10 +19,12 @@ import Cart from "./components/carrinho/Cart";
 import DictionaryProvider from "./context/DictionaryProvider";
 import ThemeProvider from "./context/ThemeContext";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
+import useHealthCheck from "./hooks/useHealthCheck";
 
 function App() {
   useSmoothScroll();
-  
+  useHealthCheck();
+
   return (
     <>
       <ThemeProvider>
