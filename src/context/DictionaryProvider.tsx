@@ -115,7 +115,8 @@ const dictionary: DictionaryType = {
     maisFacilApp: ["É mais fácil pelo app", "It's easier through the app", "Es más fácil a través de la app"],
     baixeApp: ["Baixe o app", "Download the app", "Descarga la app"],
     leiaQR: ["Leia o código QR para baixar o app", "Scan the QR code to download the app", "Lee el código QR para descargar la app"],
-    baixeAppParceiro: ["Baixe o app de parceiro", "Download the partner app", "Descarga la app de socio"]
+    baixeAppParceiro: ["Baixe o app de parceiro", "Download the partner app", "Descarga la app de socio"],
+    selecioneEstado: ["Selecione um estado", "Select a state", "Seleccione un estado"],
 }
 
 

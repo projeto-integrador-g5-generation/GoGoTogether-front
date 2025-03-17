@@ -306,8 +306,10 @@ function FormViagem() {
               id="status_viagem"
               className="border p-2 border-slate-800 rounded focus:outline-none focus:ring-2 focus:ring-zinc-400"
               onChange={handleStatusChange}
-              value={viagem.status_viagem || "1"}
+              required
+              value={viagem?.status_viagem}
             >
+              <option value="" selected disabled>{translate("selecioneEstado")}</option>
               <option value="1">{translate("agendada")}</option>
               <option value="2">{translate("emAndamento")}</option>
               <option value="3">{translate("concluida")}</option>
@@ -358,6 +360,7 @@ function FormViagem() {
               id="veiculo"
               className="border p-2 border-slate-800 rounded focus:outline-none focus:ring-2 focus:ring-zinc-400"
               onChange={handleVeiculoChange}
+              required
               value={viagem.veiculo?.id}
             >
               <option value="" selected disabled>
