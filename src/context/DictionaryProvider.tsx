@@ -117,6 +117,18 @@ const dictionary: DictionaryType = {
     leiaQR: ["Leia o código QR para baixar o app", "Scan the QR code to download the app", "Lee el código QR para descargar la app"],
     baixeAppParceiro: ["Baixe o app de parceiro", "Download the partner app", "Descarga la app de socio"],
     selecioneEstado: ["Selecione um estado", "Select a state", "Seleccione un estado"],
+    pais: ["Brasil, São Paulo", "Brazil, São Paulo", "Brasil, São Paulo"],
+    inicio: ["Início", "Home", "Inicio"],
+    apoio: ["Apoio", "Support", "Apoyo"],
+    perguntas_frequentes: ["Perguntas Frequentes", "Frequently Asked Questions", "Preguntas Frecuentes"] , 
+  seguranca_nas_caronas: ["Segurança nas Caronas", "Ride Safety", "Seguridad en los Viajes Compartidos"]  ,
+  contato_e_suporte: ["Contato e Suporte", "Contact & Support", "Contacto y Soporte"],
+  nossos_motoristas: ["Nossos Motoristas", "Our Drivers", "Nuestros Conductores"],
+  informacoes: ["Informações", "Information", "Información"],
+  rotas_disponiveis: ["Rotas Disponíveis", "Available Routes", "Rutas Disponibles"],
+  horarios_de_partida: ["Horários de Partida", "Departure Times", "Horarios de Salida"],
+  precos_e_pagamentos: ["Preços e Pagamentos", "Prices and Payments", "Precios y Pagos"],
+  como_funciona: ["Como Funciona", "How It Works", "Cómo Funciona"],
 }
 
 

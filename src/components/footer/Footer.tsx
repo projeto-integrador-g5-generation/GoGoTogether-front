@@ -8,10 +8,12 @@ import {
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useTheme } from "../../context/ThemeContext";
+import { useDictionary } from "../../context/DictionaryProvider";
 
 const Footer = () => {
   const data = new Date().getFullYear();
   const { theme } = useTheme();
+  const { translate } = useDictionary();
 
   return (
     <footer
@@ -20,7 +22,7 @@ const Footer = () => {
           ? "bg-gradient-to-r from-emerald-800 to-emerald-900"
           : "bg-black"
       } text-white p-4 justify-center items-center`}
-        data-animate="top"
+      data-animate="top"
     >
       <div className="flex flex-col gap-4 sm:flex-row w-full justify-between max-w-7xl p-4">
         <div className="flex flex-col sm:flex-row w-full justify-around">
@@ -29,10 +31,10 @@ const Footer = () => {
               <Taxi size={42} />
               GoGoTogether
             </h1>
-            <p>Movendo Pessoas e Conectando Caminhos.</p>
+            <p>{translate("slide2")}</p>
             <div className="flex items-center gap-4 justify-start w-full pt-2">
               <FaLocationArrow />
-              <p>Brasil, São Paulo</p>
+              <p>{translate("pais")}</p>
             </div>
             <div className="flex items-center gap-4 justify-start w-full">
               <FaMobileAlt />
@@ -55,16 +57,16 @@ const Footer = () => {
             <h1 className="font-bold">Links</h1>
             <ul className="flex flex-col gap-3">
               <Link to="/" className="hover:underline">
-                Inicio
+                {translate("inicio")}
               </Link>
               <Link to="/sobre" className="hover:underline">
-                Sobre
+                {translate("sobre")}
               </Link>
               <Link to="/viagens" className="hover:underline">
-                Viagens
+                {translate("viagens")}
               </Link>
               <Link to="/veiculos" className="hover:underline">
-                Veículos
+                {translate("veiculos")}
               </Link>
             </ul>
           </div>
@@ -72,22 +74,22 @@ const Footer = () => {
 
         <div className="flex w-full justify-around">
           <div className="flex flex-col gap-2 p-2">
-            <h1 className="font-bold">Apoio</h1>
+            <h1 className="font-bold"> {translate("apoio")}</h1>
             <ul className="flex flex-col gap-3">
-              <li className="cursor-pointer">Perguntas Frequentes</li>
-              <li className="cursor-pointer">Segurança nas Caronas</li>
-              <li className="cursor-pointer">Contato e Suporte</li>
-              <li className="cursor-pointer">Nossos Motoristas</li>
+              <li className="cursor-pointer">{translate("perguntas_frequentes")}</li>
+              <li className="cursor-pointer">{translate("seguranca_nas_caronas")}</li>
+              <li className="cursor-pointer">{translate("contato_e_suporte")}</li>
+              <li className="cursor-pointer">{translate("nossos_motoristas")}</li>
             </ul>
           </div>
 
           <div className="flex flex-col gap-2 p-2">
-            <h1 className="font-bold">Informações</h1>
+            <h1 className="font-bold">{translate("informacoes")}</h1>
             <ul className="flex flex-col gap-3">
-              <li className="cursor-pointer">Rotas Disponíveis</li>
-              <li className="cursor-pointer">Horários de Partida</li>
-              <li className="cursor-pointer">Preços e Pagamentos</li>
-              <li className="cursor-pointer">Como Funciona</li>
+              <li className="cursor-pointer">{translate("rotas_disponiveis")}</li>
+              <li className="cursor-pointer">{translate("horarios_de_partida")}</li>
+              <li className="cursor-pointer">{translate("precos_e_pagamentos")}</li>
+              <li className="cursor-pointer">{translate("como_funciona")}</li>
             </ul>
           </div>
         </div>
